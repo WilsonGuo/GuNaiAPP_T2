@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScreenViewController">
+            <connections>
+                <outlet property="timeView" destination="sDi-dd-iJX" id="07g-yn-uVs"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="滤网信息" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOc-VJ-k3y">
+                    <rect key="frame" x="241" y="33" width="118" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="118" id="2q3-i9-Xa5"/>
+                        <constraint firstAttribute="height" constant="26" id="hB8-45-gjZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="2q3-i9-Xa5"/>
+                            <exclude reference="hB8-45-gjZ"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular">
+                        <mask key="constraints">
+                            <include reference="2q3-i9-Xa5"/>
+                            <include reference="hB8-45-gjZ"/>
+                        </mask>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMe-Vl-o3n">
+                    <rect key="frame" x="24" y="32" width="27" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="I0s-cJ-5YE"/>
+                        <constraint firstAttribute="width" constant="27" id="sf7-js-RMF"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="back.png"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="I0s-cJ-5YE"/>
+                            <exclude reference="sf7-js-RMF"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular">
+                        <mask key="constraints">
+                            <include reference="I0s-cJ-5YE"/>
+                            <include reference="sf7-js-RMF"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="OHN-Ow-wZc"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynO-Du-uMD">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEw-Fd-Kxy">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="15" y="29" width="70" height="38"/>
+                            </variation>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wan-IN-P6q">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="76" width="600" height="1"/>
+                            </variation>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买网址：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2b-y7-uGV">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="15" y="95" width="70" height="38"/>
+                            </variation>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kM-Tg-MMS">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="136" width="600" height="1"/>
+                            </variation>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bhz-ys-BjS">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="201" width="600" height="1"/>
+                            </variation>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务电话：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MY-Pq-dwu">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="15" y="163" width="70" height="38"/>
+                            </variation>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3749小时" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDi-dd-iJX">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" red="0.29411764705882354" green="0.63137254901960782" blue="0.050980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="79" y="28" width="206" height="38"/>
+                            </variation>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.shop112304399.taobao.com/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX5-ac-aIR">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.29411764709999999" green="0.63137254899999995" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="79" y="94" width="448" height="38"/>
+                            </variation>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400-0679899" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOk-H4-H2f">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.29411764709999999" green="0.63137254899999995" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="79" y="162" width="448" height="38"/>
+                            </variation>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="HEw-Fd-Kxy"/>
+                            <exclude reference="Wan-IN-P6q"/>
+                            <exclude reference="Y2b-y7-uGV"/>
+                            <exclude reference="6kM-Tg-MMS"/>
+                            <exclude reference="Bhz-ys-BjS"/>
+                            <exclude reference="1MY-Pq-dwu"/>
+                            <exclude reference="sDi-dd-iJX"/>
+                            <exclude reference="gX5-ac-aIR"/>
+                            <exclude reference="rOk-H4-H2f"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="0.0" y="67" width="600" height="733"/>
+                        <mask key="subviews">
+                            <include reference="HEw-Fd-Kxy"/>
+                            <include reference="Wan-IN-P6q"/>
+                            <include reference="Y2b-y7-uGV"/>
+                            <include reference="6kM-Tg-MMS"/>
+                            <include reference="Bhz-ys-BjS"/>
+                            <include reference="1MY-Pq-dwu"/>
+                            <include reference="sDi-dd-iJX"/>
+                            <include reference="gX5-ac-aIR"/>
+                            <include reference="rOk-H4-H2f"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.23529411759999999" green="0.60784313729999995" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="AOc-VJ-k3y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4iS-YV-b9I">
+                    <variation key="heightClass=regular" constant="33"/>
+                </constraint>
+                <constraint firstItem="AOc-VJ-k3y" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Xxf-HD-5cO"/>
+                <constraint firstItem="kMe-Vl-o3n" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="q5F-vc-aO2">
+                    <variation key="heightClass=regular" constant="36"/>
+                </constraint>
+                <constraint firstItem="kMe-Vl-o3n" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wq0-E7-goz">
+                    <variation key="heightClass=regular" constant="24"/>
+                </constraint>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="AOc-VJ-k3y"/>
+                    <exclude reference="kMe-Vl-o3n"/>
+                    <exclude reference="ynO-Du-uMD"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="q5F-vc-aO2"/>
+                    <exclude reference="wq0-E7-goz"/>
+                    <exclude reference="4iS-YV-b9I"/>
+                    <exclude reference="Xxf-HD-5cO"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular">
+                <mask key="subviews">
+                    <include reference="AOc-VJ-k3y"/>
+                    <include reference="kMe-Vl-o3n"/>
+                    <include reference="ynO-Du-uMD"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="q5F-vc-aO2"/>
+                    <include reference="wq0-E7-goz"/>
+                    <include reference="4iS-YV-b9I"/>
+                    <include reference="Xxf-HD-5cO"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="182" y="329"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back.png" width="36" height="36"/>
+    </resources>
+</document>

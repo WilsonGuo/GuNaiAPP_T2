@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserGuidViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="atn-af-IB3" id="gi9-s5-Kjd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="设备管理" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEz-ru-tqj">
+                    <rect key="frame" x="241" y="33" width="118" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="Gzo-Yx-lZu"/>
+                        <constraint firstAttribute="width" constant="118" id="NxT-9F-iPa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Gzo-Yx-lZu"/>
+                            <exclude reference="NxT-9F-iPa"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular">
+                        <mask key="constraints">
+                            <include reference="Gzo-Yx-lZu"/>
+                            <include reference="NxT-9F-iPa"/>
+                        </mask>
+                    </variation>
+                </label>
+                <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="atn-af-IB3">
+                    <rect key="frame" x="0.0" y="67" width="600" height="533"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                </webView>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51W-u2-aSk">
+                    <rect key="frame" x="24" y="32" width="27" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="v3h-3j-NcV"/>
+                        <constraint firstAttribute="width" constant="27" id="zkd-Fz-8NR"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="back.png"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="v3h-3j-NcV"/>
+                            <exclude reference="zkd-Fz-8NR"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular">
+                        <mask key="constraints">
+                            <include reference="v3h-3j-NcV"/>
+                            <include reference="zkd-Fz-8NR"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="qXh-Py-lpu"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.23529411759999999" green="0.60784313729999995" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="51W-u2-aSk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="32" id="22i-E1-4Vx"/>
+                <constraint firstItem="JEz-ru-tqj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="33" id="3oo-By-U45"/>
+                <constraint firstItem="atn-af-IB3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8l5-Sf-oXQ"/>
+                <constraint firstItem="JEz-ru-tqj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9I2-9P-TxY"/>
+                <constraint firstItem="atn-af-IB3" firstAttribute="top" secondItem="JEz-ru-tqj" secondAttribute="bottom" constant="8" symbolic="YES" id="Adu-C8-pRu"/>
+                <constraint firstItem="atn-af-IB3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MRv-2T-Snz"/>
+                <constraint firstAttribute="trailing" secondItem="atn-af-IB3" secondAttribute="trailing" id="dRj-gn-O0L"/>
+                <constraint firstItem="51W-u2-aSk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="f0i-M0-Llh"/>
+                <constraint firstAttribute="bottom" secondItem="atn-af-IB3" secondAttribute="bottom" id="lA6-kC-Mc2"/>
+            </constraints>
+            <point key="canvasLocation" x="-160" y="10"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back.png" width="36" height="36"/>
+    </resources>
+</document>
