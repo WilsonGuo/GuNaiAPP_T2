@@ -1,25 +1,32 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "a35d910c-75e2-9c4a-adb5-9f7797da6823++6571",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9B1DCA3573944474994CE36D4C9139B4D3ACDD41",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "a35d910c-75e2-9c4a-adb5-9f7797da6823++6571" : {
+    "a35d910c-75e2-9c4a-adb5-9f7797da6823++8828" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "a35d910c-75e2-9c4a-adb5-9f7797da6823++6571" : 0
+    "9B1DCA3573944474994CE36D4C9139B4D3ACDD41" : 0,
+    "a35d910c-75e2-9c4a-adb5-9f7797da6823++8828" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "87BF2100-A8E5-47AD-84BD-494B3E874978",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "a35d910c-75e2-9c4a-adb5-9f7797da6823++6571" : "trunk\/"
+    "9B1DCA3573944474994CE36D4C9139B4D3ACDD41" : "GuNaiAPP_T2\/",
+    "a35d910c-75e2-9c4a-adb5-9f7797da6823++8828" : ""
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "GuNaiAPP_T2",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GuNaiAPP_T2\/GuNaiAPP_T2.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GuNaiAPP_T2.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/WilsonGuo\/GuNaiAPP_T2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9B1DCA3573944474994CE36D4C9139B4D3ACDD41"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/112.74.85.63\/svn\/Projects",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "a35d910c-75e2-9c4a-adb5-9f7797da6823++6571"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "a35d910c-75e2-9c4a-adb5-9f7797da6823++8828"
     }
   ]
 }
