@@ -14,6 +14,12 @@
 #define DEVICE_NAME_S2 @"S2壁挂新风系统"
 #define DEVICE_NAME_CENTER @"中央新风系统"
 
+#define DEVICE_NAME_DEFAULT_TAIWAN @"古耐智慧設備"
+#define DEVICE_NAME_S1_TAIWAN @"S1壁掛新風系統"
+#define DEVICE_NAME_S2_TAIWAN @"S2壁掛新風系統"
+#define DEVICE_NAME_CENTER_TAIWAN @"中央新風系統"
+#define PHONE_LAUNGE @"zh-Hant"
+
 #define DEV_ID @"devID"
 #define BUFF @"buff"
 
@@ -67,6 +73,7 @@
 
 
 +(BOOL) isTurnOFF;
+
 +(void) setTurnOFF:(BOOL)isOff;
 +(int) getCMDType;
 +(void) setCMDType:(int)type;

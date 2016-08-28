@@ -110,7 +110,7 @@
         
         sqlite3_stmt *statement = nil;
         //sql语句
-        char *sql = "SELECT id,name,devid,status, type FROM DevInfo";
+        char *sql = "SELECT id,name,devid,status, type,devicetype,FROM DevInfo";
         
         if (sqlite3_prepare_v2(_database, sql, -1, &statement, NULL) != SQLITE_OK) {
             NSLog(@"Error: failed to prepare statement with message:init DevInfo.");
@@ -162,7 +162,7 @@
 - (BOOL) createDevInfo:(sqlite3*)db {
     
     //这句是大家熟悉的SQL语句
-    char *sql = "create table if not exists DevInfo(id INTEGER PRIMARY KEY AUTOINCREMENT, name text,devid text,status int, type int)";// testID是列名，int 是数据类型，testValue是列名，text是数据类型，是字符串类型
+    char *sql = "create table if not exists DevInfo(id INTEGER PRIMARY KEY AUTOINCREMENT, name text,devid text,status int, type int,devicetype int)";// testID是列名，int 是数据类型，testValue是列名，text是数据类型，是字符串类型
     
     sqlite3_stmt *statement;
    
@@ -228,7 +228,7 @@
         sqlite3_stmt *statement;
         
         
-        static char *sql = "INSERT INTO DevInfo(name,devid,status,type) VALUES(?,?,?,?)";
+        static char *sql = "INSERT INTO DevInfo(name,devid,status,type,devicetype) VALUES(?,?,?,?,?)";
         
         int success2 = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
         if (success2 != SQLITE_OK) {
@@ -241,12 +241,13 @@
         sqlite3_bind_text(statement, i++, [insertDevInfo.name UTF8String], -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(statement, i++, [insertDevInfo.devId UTF8String], -1, SQLITE_TRANSIENT);
          NSLog(@"insertDevInfo>>>insert %@",insertDevInfo.devId );
-         NSLog(@"insertDevInfo   insert [insertDevInfo.devId UTF8String]=%s",[insertDevInfo.devId UTF8String]);
+        
         sqlite3_bind_int(statement, i++, insertDevInfo.status);
         sqlite3_bind_int(statement, i++, insertDevInfo.devType);
+         sqlite3_bind_int(statement, i++, insertDevInfo.devInfo.deviceType);
         
-        
-        //执行插入语句
+        NSLog(@"insertDevInfo>>>>>>>>insertDevInfo.devInfo.deviceType= %d",insertDevInfo.devInfo.deviceType );
+                //执行插入语句
         success2 = sqlite3_step(statement);
         //NSLog(@"insertDevInfo:%d",success2);
         //释放statement
@@ -285,7 +286,7 @@
     if ([self openDB]) {
         sqlite3_stmt *statement;//这相当一个容器，放转化OK的sql语句
         //组织SQL语句
-        char *sql = "update DevInfo set name = ? , status = ?  , type = ? WHERE devid = ?";
+        char *sql = "update DevInfo set name = ? , status = ?  , type = ?,devicetype = ? WHERE devid = ?";
         //const char *sql = "update DevInfo set name=?   ";
         //将SQL语句放入sqlite3_stmt中
         int success = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
@@ -301,9 +302,9 @@
         NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>update:DevInfo  devid=%s",[updateDevInfo.devId UTF8String]);
         
         sqlite3_bind_text(statement,i++, [updateDevInfo.name UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, i++, [updateDevInfo.devId UTF8String], -1, SQLITE_TRANSIENT);        sqlite3_bind_int(statement, i++, updateDevInfo.status);
+        sqlite3_bind_text(statement, i++, [updateDevInfo.devId UTF8String], -1, SQLITE_TRANSIENT);   sqlite3_bind_int(statement, i++, updateDevInfo.status);
         sqlite3_bind_int(statement, i++, updateDevInfo.devType);
-        
+         sqlite3_bind_int(statement, i++, updateDevInfo.devInfo.deviceType);
         
         
         //
@@ -396,7 +397,7 @@
         
         sqlite3_stmt *statement = nil;
         //sql语句name text,devid int,status int, type int
-        NSString *querySQL = [NSString stringWithFormat:@"SELECT id,name,status,type from DevInfo where devid = ? "];
+        NSString *querySQL = [NSString stringWithFormat:@"SELECT id,name,status,type,devicetype from DevInfo where devid = ? "];
         const char *sql = [querySQL UTF8String];
         if (sqlite3_prepare_v2(_database, sql, -1, &statement, NULL) != SQLITE_OK) {
             NSLog(@"Error: failed to prepare statement with message:search DevInfo.");
@@ -417,11 +418,14 @@
                 NSLog(@"devStatus====>:%d ",devStatus);
                 int devType =sqlite3_column_int(statement,i++);
                  NSLog(@"devType====>:%d ",devType);
+                int devicetype=sqlite3_column_int(statement,i++);
+                 NSLog(@"devicetype====>:%d ",devicetype);
                 info.name=[NSString stringWithUTF8String:nameText];
                 info.devType=devType;
                 info.status=devStatus;
                 info.devId=devid;
-                NSLog(@"getDevInfoFromDBByDevID:%@ devId:%@  devType:%u status:%u ",info.name,devid,info.devType,info.status);
+                info.devInfo.deviceType=devicetype;
+                NSLog(@"getDevInfoFromDBByDevID:%@ devId:%@  devType:%u status:%u  devicetype:%u ",info.name,devid,info.devType,info.status,info.devInfo.deviceType);
                 
                 
             }
@@ -446,7 +450,7 @@
         
         sqlite3_stmt *statement = nil;
         //sql语句
-        char *sql = "SELECT id,name,devid,status,type FROM DevInfo";
+        char *sql = "SELECT id,name,devid,status,type,devicetype FROM DevInfo";
         
         if (sqlite3_prepare_v2(_database, sql, -1, &statement, NULL) != SQLITE_OK) {
             NSLog(@"Error: failed to prepare statement with message:init DevInfo.");
@@ -464,7 +468,9 @@
                 NSLog(@"getAllDevInfos:  devId :%@ ",info.devId);
                 int devStatus =sqlite3_column_int(statement,i++);
                 int devType =sqlite3_column_int(statement,i++);
+                int devicetype =sqlite3_column_int(statement,i++);
                 
+                 NSLog(@"getAllDevInfos:  devicetype :%d ",devicetype);
                 if (nameText!=NULL&&nameText!=nil) {
                     info.name=[NSString stringWithUTF8String:nameText];
                 }else{
@@ -476,6 +482,10 @@
                
                 info.devType=devType;
                 info.status=devStatus;
+                if(info.devInfo==nil){
+                    info.devInfo= [[DeviceInfo alloc] init];
+                }
+                info.devInfo.deviceType=devicetype;
                 
                 [list addObject:info];
                

@@ -9,7 +9,7 @@
 #import <sqlite3.h>
 #import "GNDevice.h"
 
-#define kFilename  @"goodnight19.db"
+#define kFilename  @"goodnight20.db"
 
 
 @interface sqlService : NSObject {

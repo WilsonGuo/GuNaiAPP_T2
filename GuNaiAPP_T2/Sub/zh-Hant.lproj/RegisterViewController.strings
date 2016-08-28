@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "详细地址："; ObjectID = "2Sa-qb-dKn"; */
+"2Sa-qb-dKn.text" = "詳細地址：";
+
+/* Class = "UILabel"; text = "联系方式："; ObjectID = "K9C-rc-foa"; */
+"K9C-rc-foa.text" = "聯繫方式：";
+
+/* Class = "UILabel"; text = "MAC地址："; ObjectID = "LYl-Kp-ESY"; */
+"LYl-Kp-ESY.text" = "MAC地址：";
+
+/* Class = "UIButton"; normalTitle = "提 交"; ObjectID = "QD8-Od-ZAE"; */
+"QD8-Od-ZAE.normalTitle" = "提 交";
+
+/* Class = "UILabel"; text = "古耐24小时贴心卫士"; ObjectID = "biK-c3-sgm"; */
+"biK-c3-sgm.text" = "古耐24小時貼心衛士";
+
+/* Class = "UILabel"; text = "说明：注册古耐贴心卫士相当于给您的空气请了一位24小时贴心卫士，古耐专业人员将实时监控产品每一天的工作状况，当产品出现问题时，古耐专业人员将第一时间通知您，为您提供有效的服务！"; ObjectID = "fW9-EZ-Yzr"; */
+"fW9-EZ-Yzr.text" = "說明：注册古耐貼心衛士相當於給您的空氣請了一比特24小時貼心衛士，古耐專業人員將即時監控產品每一天的工作狀況，當產品出現問題時，古耐專業人員將第一時間通知您，為您提供有效的服務！";
+
+/* Class = "UILabel"; text = "电子邮箱："; ObjectID = "gbb-Fb-BST"; */
+"gbb-Fb-BST.text" = "電子郵箱：";
+
+/* Class = "UILabel"; text = "欢迎使用古耐新风产品                                    为后续给您提供24小时贴心服务                      请填写以下信息"; ObjectID = "nVq-d3-x17"; */
+"nVq-d3-x17.text" = "歡迎使用古耐新風產品                                    為後續給您提供24小時貼心服務                      請填寫以下資訊";
+
+/* Class = "UILabel"; text = "用  户  名："; ObjectID = "yAf-g5-Yw3"; */
+"yAf-g5-Yw3.text" = "用 戶 名：";

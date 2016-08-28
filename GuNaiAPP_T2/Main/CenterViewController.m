@@ -67,17 +67,16 @@
     [self.fenImg.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
     
     //self.device=[NetWorkManager sharedInstance].devInfo;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self ReflushUI];
-    });
+    DeviceInfo *info=[NetWorkManager sharedInstance].deviceInfo;
     
-    
-    if (self.device.devInfo.workMode==0) {
-        OpenViewController *vc=[[OpenViewController alloc]init];
-        vc.device=self.device;
-        [self.navigationController pushViewController:vc animated:YES];
+    if([[NSString stringWithFormat:@"%x", info.sn] isEqual:self.device.devId]){
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self ReflushUI:info];
+            
+        });
     }
-    
     
     
 }
@@ -95,12 +94,16 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void)getData:(NSNotification *)notification{
+    DeviceInfo *info=[NetWorkManager sharedInstance].deviceInfo;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if([[NSString stringWithFormat:@"%x", info.sn] isEqual:self.device.devId]){
         
-        [self ReflushUI];
-        
-    });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self ReflushUI:info];
+            
+        });
+    }
     
 }
 
@@ -489,10 +492,10 @@
 
 
 
--(void)ReflushUI{
+-(void)ReflushUI:(DeviceInfo *) info{
     NSLog(@">>>>>>>>>>>>>>>>>>>>>ReflushUI<<<<<<<<<<<<<<<<<<<");
     //    DeviceInfo *info=[NetWorkManager sharedInstance].deviceInfo;
-    DeviceInfo *info=self.device.devInfo;
+   // DeviceInfo *info=self.device.devInfo;
     if (info!=nil) {
         
         
@@ -575,7 +578,18 @@
                 
                 break;
                 
+            case CENTRAL_MODE_SHUTDOWN:
+                if([NetWorkManager sharedInstance].isShowDown==false){
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        OpenViewController *vc=[[OpenViewController alloc]init];
+                        vc.device=self.device;
+                        [self.navigationController pushViewController:vc animated:YES];
+                        
+                    });
+                }
                 
+                break;
                 
                 
         }

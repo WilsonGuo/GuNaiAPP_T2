@@ -62,8 +62,34 @@
 
 
 -(void)changeToMainVC:(NSNotification *)notification{
-    
-    
+  
+    dispatch_async(dispatch_get_main_queue(), ^{
+        int deviceType=[NetWorkManager sharedInstance].devInfo.devInfo.deviceType;
+        
+        [self endLoading];
+
+        NSLog(@"select>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>info.sn===%@,   deviceType=%d",[NSString stringWithFormat:@"%x", [NetWorkManager sharedInstance].devInfo.devInfo.sn],deviceType);
+        
+        
+        if (deviceType==DEVICE_TYPE_24G) {
+            CenterViewController *vc=[[CenterViewController alloc]init];
+            vc.device=[NetWorkManager sharedInstance].devInfo;
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }else if(deviceType==DEVICE_TYPE_T2){
+            MainViewController *vc=[[MainViewController alloc]init];
+            vc.device=[NetWorkManager sharedInstance].devInfo;
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }else if(deviceType==DEVICE_TYPE_T1){
+            MainViewController *vc=[[MainViewController alloc]init];
+            vc.device=[NetWorkManager sharedInstance].devInfo;
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            
+        }
+    });
+
     
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -196,28 +222,10 @@
         
         int infoID=strtoul([[device.devId substringWithRange:NSMakeRange(0, device.devId.length)] UTF8String],0,16);
         NSString *str=[NSString stringWithFormat:@"ID:%u",infoID&0x7fffffff];
-        NSLog(@"reflush***************************************id=%@,devType=%d,status=%d",str,device.devInfo.deviceType,device.status);
+       
         if(status==1){
             NSLog(@"设备在线：devID=%u  status=%d",devID,status);
-            
-            [AppDelegate setCMDType:CMD_CUR_TYPE_QUARY_DEVICE_INFO];
-            int devID=strtoul([[device.devId substringWithRange:NSMakeRange(0, device.devId.length)] UTF8String],0,16);
-            
-            int dalay=i*2;
-            NSLog(@"************************************dalay=%d",dalay);
-            
-            //            dispatch_time_t timer = dispatch_time(DISPATCH_TIME_NOW, dalay*NSEC_PER_SEC);
-            //            dispatch_after(timer, dispatch_get_main_queue(), ^{
-            //            });
-            
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, dalay*NSEC_PER_USEC),dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>airQueryState");
-                
-                int result=[[NetWorkManager sharedInstance] airQueryState:devID];
-                
-            });
-            
+ 
         }else{
             NSLog(@"设备不在线：devID=%u  status=%d",devID,status);
         }
@@ -232,40 +240,22 @@
 
 #pragma maik - TableView datasource
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    GNDevice *device=[[NetWorkManager sharedInstance].devices objectAtIndex:indexPath.row];
+    GNDevice *curDevice=[[NetWorkManager sharedInstance].devices objectAtIndex:indexPath.row];
     
-    [NetWorkManager sharedInstance].devInfo=device;
+    [NetWorkManager sharedInstance].devInfo=curDevice;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if (device.status==STATUS_ON) {
-            
-            
+        if (curDevice.status==STATUS_ON) {
+            [AppDelegate setCMDType:CMD_CUR_TYPE_QUARY_DEVICE_INFO];
+            int devID=strtoul([[curDevice.devId substringWithRange:NSMakeRange(0, curDevice.devId.length)] UTF8String],0,16);
+            [[NetWorkManager sharedInstance] airQueryState:devID];
             dispatch_async(dispatch_get_main_queue(), ^{
-                int deviceType=device.devInfo.deviceType;
                 
-                NSLog(@"select>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>info.sn===%@,   deviceType=%d",[NSString stringWithFormat:@"%x", device.devInfo.sn],deviceType);
+                //[self startLoading];
                 
-                
-                                if (deviceType==DEVICE_TYPE_24G) {
-                                    CenterViewController *vc=[[CenterViewController alloc]init];
-                                    vc.device=device;
-                                    [self.navigationController pushViewController:vc animated:YES];
-                
-                                }else if(deviceType==DEVICE_TYPE_T2){
-                                    MainViewController *vc=[[MainViewController alloc]init];
-                                    vc.device=device;
-                                    [self.navigationController pushViewController:vc animated:YES];
-                
-                                }else if(deviceType==DEVICE_TYPE_T1){
-                                    MainViewController *vc=[[MainViewController alloc]init];
-                                    vc.device=device;
-                                    [self.navigationController pushViewController:vc animated:YES];
-                                }else{
-                
-                                }
             });
-            
-            
+
+          
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self showTip:@"该设备不在线！"];
@@ -274,7 +264,7 @@
         }
         
     });
-    if (device.status==STATUS_ON) {
+    if (curDevice.status==STATUS_ON) {
         
     }
 };
@@ -311,7 +301,64 @@
     int infoID=strtoul([[info.devId substringWithRange:NSMakeRange(0, info.devId.length)] UTF8String],0,16);
     cell.devID.text=[NSString stringWithFormat:@"ID:%u",infoID&0x7fffffff];
     
+    NSString *launge=[[SmartDeviceUtils sharedInstance] getCurrentLanguage];
+    if([launge isEqual:PHONE_LAUNGE]){//台湾
+        if(info.status==1){
+            
+            cell.devStatus.text=@"線上";
+            if (info.devInfo!=nil) {
+                
+                
+                int deviceType=info.devInfo.deviceType;
+                if (deviceType==DEVICE_TYPE_24G) {
+                    
+                    if ([info.name isEqual:DEVICE_NAME_DEFAULT_TAIWAN]) {
+                        cell.devName.text=DEVICE_NAME_CENTER_TAIWAN;
+                        
+                        info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_CENTER_TAIWAN];
+                        
+                    }else{
+                        cell.devName.text=info.name;
+                    }
+                }else if(deviceType==DEVICE_TYPE_T1){
+                    if ([info.name isEqual:DEVICE_NAME_DEFAULT_TAIWAN]) {
+                        cell.devName.text=DEVICE_NAME_S1_TAIWAN;
+                        
+                        info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_S1_TAIWAN];
+                        
+                    }else{
+                        cell.devName.text=info.name;
+                    }
+                }else if(deviceType==DEVICE_TYPE_T2){
+                    
+                    if ([info.name isEqual:DEVICE_NAME_DEFAULT_TAIWAN]) {
+                        cell.devName.text=DEVICE_NAME_S2_TAIWAN;
+                        
+                        info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_S2_TAIWAN];
+                        
+                    }else{
+                        cell.devName.text=info.name;
+                    }
+                    
+                }else{
+                    cell.devName.text=info.name;
+                }
+            }else{
+                cell.devName.text=info.name;
+                
+                
+            }
+        }else{
+            cell.devStatus.text=@"離線";
+            cell.devName.text=info.name;
+        }
+
+    }else{
+        
+    
+    
     if(info.status==1){
+        
         cell.devStatus.text=@"在线";
         if (info.devInfo!=nil) {
             
@@ -323,8 +370,6 @@
                     cell.devName.text=DEVICE_NAME_CENTER;
                     
                     info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_CENTER];
-                    [[sqlService sharedSqlService] deleteDevInfo:info];
-                    [[sqlService sharedSqlService] insertDevInfo:info];
                     
                 }else{
                     cell.devName.text=info.name;
@@ -334,8 +379,6 @@
                     cell.devName.text=DEVICE_NAME_S1;
                     
                     info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_S1];
-                    [[sqlService sharedSqlService] deleteDevInfo:info];
-                    [[sqlService sharedSqlService] insertDevInfo:info];
                     
                 }else{
                     cell.devName.text=info.name;
@@ -346,8 +389,6 @@
                     cell.devName.text=DEVICE_NAME_S2;
                     
                     info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_S2];
-                    [[sqlService sharedSqlService] deleteDevInfo:info];
-                    [[sqlService sharedSqlService] insertDevInfo:info];
                     
                 }else{
                     cell.devName.text=info.name;
@@ -366,14 +407,7 @@
         cell.devName.text=info.name;
     }
     
-    
-    NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>name=%@",info.name);
-    
-    
-    
-    
-    
-    
+    }
     //长按操作
     UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(cellLongPress:)];
     [cell addGestureRecognizer:longPressGesture];
@@ -412,6 +446,8 @@
     rotationAnimation.repeatCount =HUGE_VALF;
     
     [self.waitImgView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    
+   
     
 }
 -(void)endLoading{

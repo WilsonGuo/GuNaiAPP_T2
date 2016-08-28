@@ -14,8 +14,10 @@
 @property (retain,nonatomic) GNDevice* devInfo;
 @property (retain,nonatomic)  DeviceInfo *deviceInfo;
 @property (retain,nonatomic) NSMutableArray *devices;
+@property (assign,nonatomic) boolean isShowDown;
 
 + (NetWorkManager *)sharedInstance;
+
 
 -(int) airClose:(int) devId;
 -(int) airOpen:(int) devId;

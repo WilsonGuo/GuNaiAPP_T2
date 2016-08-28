@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "显示全部设备"; ObjectID = "7zo-4C-Ek1"; */
+"7zo-4C-Ek1.text" = "显示全部设备";
+
+/* Class = "UIButton"; normalTitle = "添加到列表"; ObjectID = "8Vg-N4-4p3"; */
+"8Vg-N4-4p3.normalTitle" = "添加到列表";
+
+/* Class = "UILabel"; text = "显示新设备"; ObjectID = "RQB-Pg-QA1"; */
+"RQB-Pg-QA1.text" = "显示新设备";
+
+/* Class = "UILabel"; text = "搜索设备"; ObjectID = "ga2-Yg-goP"; */
+"ga2-Yg-goP.text" = "搜索设备";

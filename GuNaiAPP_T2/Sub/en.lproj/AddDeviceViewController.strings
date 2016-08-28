@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "开始配置"; ObjectID = "23P-ht-SdJ"; */
+"23P-ht-SdJ.normalTitle" = "开始配置";
+
+/* Class = "UILabel"; text = "Wifi密码："; ObjectID = "2F2-ff-cdC"; */
+"2F2-ff-cdC.text" = "Wifi密码：";
+
+/* Class = "UILabel"; text = "添加一个新设备到Wi-Fi网络"; ObjectID = "cJl-5Y-6J4"; */
+"cJl-5Y-6J4.text" = "添加一个新设备到Wi-Fi网络";
+
+/* Class = "UILabel"; text = "Wifi名称："; ObjectID = "cXY-FT-m3a"; */
+"cXY-FT-m3a.text" = "Wifi名称：";
+
+/* Class = "UILabel"; text = "添加设备"; ObjectID = "htG-kJ-Y8E"; */
+"htG-kJ-Y8E.text" = "添加设备";

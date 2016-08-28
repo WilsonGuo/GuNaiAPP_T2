@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "名称："; ObjectID = "QNB-qR-KKl"; */
+"QNB-qR-KKl.text" = "名稱：";
+
+/* Class = "UILabel"; text = "修改名称"; ObjectID = "VrB-eq-R3b"; */
+"VrB-eq-R3b.text" = "修改名稱";
+
+/* Class = "UILabel"; text = "机身编号："; ObjectID = "oj1-Yn-TOq"; */
+"oj1-Yn-TOq.text" = "機身編號：";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "tys-Uh-y2C"; */
+"tys-Uh-y2C.normalTitle" = "確定";

@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "搜索设备"; ObjectID = "3e2-uF-tyy"; */
+"3e2-uF-tyy.normalTitle" = "搜索设备";
+
+/* Class = "UILabel"; text = "设备管理"; ObjectID = "TTn-9F-5Mi"; */
+"TTn-9F-5Mi.text" = "设备管理";
+
+/* Class = "UIButton"; normalTitle = "编辑备注"; ObjectID = "c2J-Lf-vNi"; */
+"c2J-Lf-vNi.normalTitle" = "编辑备注";
+
+/* Class = "UIButton"; normalTitle = "删除"; ObjectID = "u2d-KJ-yHK"; */
+"u2d-KJ-yHK.normalTitle" = "删除";

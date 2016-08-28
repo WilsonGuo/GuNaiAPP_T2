@@ -22,9 +22,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(turnOn:)
                                                  name:UI_CMD_RESULT_STATUS_TURN_ON object:nil];
-    // Do any additional setup after loading the view from its nib.
+    [NetWorkManager sharedInstance].isShowDown=true;
 }
-
+- (void)viewDidDisappear:(BOOL)animated{
+      [NetWorkManager sharedInstance].isShowDown=false;
+}
 -(void)turnOn:(NSNotification *)notification{
     DeviceInfo *info=[[notification userInfo] objectForKey:@"devID"];
     if(info!=nil){
@@ -40,17 +42,18 @@
                     CenterViewController *vc=[[CenterViewController alloc]init];
                     vc.device=self.device;
                     [self.navigationController pushViewController:vc animated:YES];
-                    
+                     return ;
                 }else if(deviceType==DEVICE_TYPE_T2){
                     MainViewController *vc=[[MainViewController alloc]init];
                     vc.device=self.device;
                     [self.navigationController pushViewController:vc animated:YES];
-                    
+                    return ;
                 }else if(deviceType==DEVICE_TYPE_T1){
                     
                     MainViewController *vc=[[MainViewController alloc]init];
                     vc.device=self.device;
                     [self.navigationController pushViewController:vc animated:YES];
+                     return ;
                 }else{
                     
                 }

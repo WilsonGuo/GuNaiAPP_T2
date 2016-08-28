@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "開始配寘"; ObjectID = "23P-ht-SdJ"; */
+"23P-ht-SdJ.normalTitle" = "開始配寘";
+
+/* Class = "UILabel"; text = "WiFi密碼："; ObjectID = "2F2-ff-cdC"; */
+"2F2-ff-cdC.text" = "WiFi密碼：";
+
+/* Class = "UILabel"; text = "添加一個新設備到Wi-Fi網絡"; ObjectID = "cJl-5Y-6J4"; */
+"cJl-5Y-6J4.text" = "添加一個新設備到Wi-Fi網絡";
+
+/* Class = "UILabel"; text = "WiFi名稱："; ObjectID = "cXY-FT-m3a"; */
+"cXY-FT-m3a.text" = "WiFi名稱：";
+
+/* Class = "UILabel"; text = "添加設備"; ObjectID = "htG-kJ-Y8E"; */
+"htG-kJ-Y8E.text" = "添加設備";

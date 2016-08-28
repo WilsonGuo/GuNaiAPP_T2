@@ -1,0 +1,135 @@
+
+/* Class = "UILabel"; text = "智能模式"; ObjectID = "0Qz-tD-lFl"; */
+"0Qz-tD-lFl.text" = "智能模式";
+
+/* Class = "UILabel"; text = "mg/m³"; ObjectID = "2hu-EK-Bce"; */
+"2hu-EK-Bce.text" = "mg/m³";
+
+/* Class = "UILabel"; text = "中速模式"; ObjectID = "3om-Rf-0D8"; */
+"3om-Rf-0D8.text" = "中速模式";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "4hG-xs-sQf"; */
+"4hG-xs-sQf.normalTitle" = "确定";
+
+/* Class = "UILabel"; text = "恒温模式"; ObjectID = "5Mc-19-IjC"; */
+"5Mc-19-IjC.text" = "恒温模式";
+
+/* Class = "UILabel"; text = "高速模式"; ObjectID = "7zW-v4-kzi"; */
+"7zW-v4-kzi.text" = "高速模式";
+
+/* Class = "UILabel"; text = "湿度:"; ObjectID = "8LX-Ew-oYZ"; */
+"8LX-Ew-oYZ.text" = "湿度:";
+
+/* Class = "UIButton"; normalTitle = "智能"; ObjectID = "9yG-Kq-UTl"; */
+"9yG-Kq-UTl.normalTitle" = "智能";
+
+/* Class = "UILabel"; text = "32"; ObjectID = "BsB-JG-JQf"; */
+"BsB-JG-JQf.text" = "32";
+
+/* Class = "UIButton"; normalTitle = "关机"; ObjectID = "EmX-FX-8Ng"; */
+"EmX-FX-8Ng.normalTitle" = "关机";
+
+/* Class = "UILabel"; text = "25C"; ObjectID = "FlN-Dr-qYy"; */
+"FlN-Dr-qYy.text" = "25C";
+
+/* Class = "UILabel"; text = "空调风量:"; ObjectID = "HBi-Te-K6i"; */
+"HBi-Te-K6i.text" = "空调风量:";
+
+/* Class = "UILabel"; text = "25C"; ObjectID = "IVb-nM-VAA"; */
+"IVb-nM-VAA.text" = "25C";
+
+/* Class = "UILabel"; text = "富 氧"; ObjectID = "Ib9-f5-wLm"; */
+"Ib9-f5-wLm.text" = "富 氧";
+
+/* Class = "UILabel"; text = "中央新风系统"; ObjectID = "IwX-6m-0uY"; */
+"IwX-6m-0uY.text" = "中央新风系统";
+
+/* Class = "UILabel"; text = "25C"; ObjectID = "IxW-5T-UZn"; */
+"IxW-5T-UZn.text" = "25C";
+
+/* Class = "UILabel"; text = "无极模式"; ObjectID = "MHh-FT-L3X"; */
+"MHh-FT-L3X.text" = "无极模式";
+
+/* Class = "UILabel"; text = "排风"; ObjectID = "MUY-gi-HrY"; */
+"MUY-gi-HrY.text" = "排风";
+
+/* Class = "UIButton"; normalTitle = "无 级"; ObjectID = "O3l-Hi-Sjp"; */
+"O3l-Hi-Sjp.normalTitle" = "无 级";
+
+/* Class = "UILabel"; text = "排污10"; ObjectID = "P1S-cK-a0B"; */
+"P1S-cK-a0B.text" = "排污10";
+
+/* Class = "UILabel"; text = "定时开关机"; ObjectID = "T79-Ic-J8v"; */
+"T79-Ic-J8v.text" = "定时开关机";
+
+/* Class = "UILabel"; text = "空调温度:"; ObjectID = "TAR-eQ-U2n"; */
+"TAR-eQ-U2n.text" = "空调温度:";
+
+/* Class = "UILabel"; text = "32"; ObjectID = "TxB-No-OBi"; */
+"TxB-No-OBi.text" = "32";
+
+/* Class = "UILabel"; text = "净气12"; ObjectID = "VfD-hq-GpM"; */
+"VfD-hq-GpM.text" = "净气12";
+
+/* Class = "UILabel"; text = "辅 热"; ObjectID = "WGU-tX-4Ix"; */
+"WGU-tX-4Ix.text" = "辅 热";
+
+/* Class = "UIButton"; normalTitle = "开机"; ObjectID = "XO5-I0-Q4q"; */
+"XO5-I0-Q4q.normalTitle" = "开机";
+
+/* Class = "UILabel"; text = "定时12:30AM"; ObjectID = "XW2-Xr-uBg"; */
+"XW2-Xr-uBg.text" = "定时12:30AM";
+
+/* Class = "UILabel"; text = "新风"; ObjectID = "ZEE-Yt-nWt"; */
+"ZEE-Yt-nWt.text" = "新风";
+
+/* Class = "UILabel"; text = "12:30 AM"; ObjectID = "evN-qh-j9L"; */
+"evN-qh-j9L.text" = "12:30 AM";
+
+/* Class = "UILabel"; text = "排 风"; ObjectID = "fCd-Nt-Uih"; */
+"fCd-Nt-Uih.text" = "排 风";
+
+/* Class = "UILabel"; text = "32"; ObjectID = "gHH-i1-YXp"; */
+"gHH-i1-YXp.text" = "32";
+
+/* Class = "UILabel"; text = "温度:"; ObjectID = "gM0-A0-VuS"; */
+"gM0-A0-VuS.text" = "温度:";
+
+/* Class = "UILabel"; text = "低速模式"; ObjectID = "hAc-FW-5dy"; */
+"hAc-FW-5dy.text" = "低速模式";
+
+/* Class = "UILabel"; text = "富 氧"; ObjectID = "huB-aK-yd3"; */
+"huB-aK-yd3.text" = "富 氧";
+
+/* Class = "UILabel"; text = "ug/m³"; ObjectID = "l6L-Zh-ydd"; */
+"l6L-Zh-ydd.text" = "ug/m³";
+
+/* Class = "UILabel"; text = "新 风"; ObjectID = "lmJ-S5-YEe"; */
+"lmJ-S5-YEe.text" = "新 风";
+
+/* Class = "UILabel"; text = "25C"; ObjectID = "pS2-QH-Or9"; */
+"pS2-QH-Or9.text" = "25C";
+
+/* Class = "UILabel"; text = "32"; ObjectID = "qIJ-fp-bjB"; */
+"qIJ-fp-bjB.text" = "32";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "qRz-E8-m3S"; */
+"qRz-E8-m3S.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "抑 菌"; ObjectID = "r1F-Pj-cUa"; */
+"r1F-Pj-cUa.text" = "抑 菌";
+
+/* Class = "UILabel"; text = "去 味"; ObjectID = "uE6-ri-sQL"; */
+"uE6-ri-sQL.text" = "去 味";
+
+/* Class = "UILabel"; text = "ppm"; ObjectID = "uH9-47-DvI"; */
+"uH9-47-DvI.text" = "ppm";
+
+/* Class = "UILabel"; text = "mg/m³"; ObjectID = "wDM-Nc-EiM"; */
+"wDM-Nc-EiM.text" = "mg/m³";
+
+/* Class = "UILabel"; text = "定时12:30AM"; ObjectID = "xg6-AT-gjD"; */
+"xg6-AT-gjD.text" = "定时12:30AM";
+
+/* Class = "UILabel"; text = "辅 热"; ObjectID = "zvg-vl-hxL"; */
+"zvg-vl-hxL.text" = "辅 热";

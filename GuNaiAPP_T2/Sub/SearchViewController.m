@@ -28,7 +28,9 @@
                                              selector:@selector(findNewWifiDev:)
                                                  name:NOTICE_MAIN_MSG_TYPE_FIND_NEW_WIFI_DEV object:nil];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeToMainVC:)
+                                                 name:UI_CMD_RESULT_QUARY_DEVICE_INFO_SUCCESS object:nil];
     
     self.devices=[[SmartDeviceUtils sharedInstance] getGNDevices];
     self.devicesNew=[[SmartDeviceUtils sharedInstance] getNewGNDevices];
@@ -110,6 +112,8 @@
                 if(status==0){
                 UserExitScanMode();
                     
+                    
+                    
                    GNDevice *infonew=[[sqlService sharedSqlService] getDevInfoFromDBByDevID:info.devId];
                     if (infonew==nil) {
                         bool result= [[sqlService sharedSqlService] insertDevInfo:info];
@@ -120,7 +124,7 @@
                                 [self.navigationController popViewControllerAnimated:YES];
                                 
                             });
-                            
+                    
                             
                         }
                     }else{
@@ -132,6 +136,9 @@
                     }
                     
                   }
+                
+                [[NetWorkManager sharedInstance] airQueryState:devID];
+
                 NSLog(@">>>>>>>>>UserAddDevie status=%d",status);
             }
         }
@@ -141,6 +148,11 @@
 }
 
 
+-(void)changeToMainVC:(NSNotification *)notification{
+    
+    
+    
+}
 
 #pragma maik - TableView datasource
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

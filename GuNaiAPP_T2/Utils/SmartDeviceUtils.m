@@ -405,4 +405,14 @@ static NSMutableArray * devicesNew;
     
     return nil;
 }
+
+
+
+- (NSString *)getCurrentLanguage
+{
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+    NSLog( @"currentLanguage>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%@" , currentLanguage);
+    return currentLanguage;
+}
 @end

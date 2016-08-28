@@ -25,7 +25,7 @@
 -(NSMutableArray *)getNewGNDevices;
 -(void)clearGNDevice;
 -(void)clearGNDeviceNew;
-
+-(NSString *)getCurrentLanguage;
 //获取SSID
 - (NSString *) getDeviceSSID;
 //获取智能设备集合

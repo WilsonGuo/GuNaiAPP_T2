@@ -1,0 +1,117 @@
+
+/* Class = "UILabel"; text = "定时12:30AM"; ObjectID = "03B-dX-42b"; */
+"03B-dX-42b.text" = "定時12:30AM";
+
+/* Class = "UILabel"; text = "排污0"; ObjectID = "2c6-gf-5aE"; */
+"2c6-gf-5aE.text" = "排污0";
+
+/* Class = "UILabel"; text = "排污10"; ObjectID = "3Hy-DL-fwX"; */
+"3Hy-DL-fwX.text" = "排污10";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "3x8-Rj-r4S"; */
+"3x8-Rj-r4S.normalTitle" = "確定";
+
+/* Class = "UIButton"; normalTitle = "关机"; ObjectID = "4Vj-PG-tZc"; */
+"4Vj-PG-tZc.normalTitle" = "關機";
+
+/* Class = "UILabel"; text = "室内湿度"; ObjectID = "5aT-fW-qYF"; */
+"5aT-fW-qYF.text" = "室內濕度";
+
+/* Class = "UILabel"; text = "辅 热"; ObjectID = "8EC-iI-s6W"; */
+"8EC-iI-s6W.text" = "輔 熱";
+
+/* Class = "UILabel"; text = "差"; ObjectID = "8dD-QJ-3wE"; */
+"8dD-QJ-3wE.text" = "差";
+
+/* Class = "UILabel"; text = "100%"; ObjectID = "ANg-AE-egf"; */
+"ANg-AE-egf.text" = "100%";
+
+/* Class = "UILabel"; text = "手动模式"; ObjectID = "Aeo-hk-OVu"; */
+"Aeo-hk-OVu.text" = "手動模式";
+
+/* Class = "UILabel"; text = "100%"; ObjectID = "ICJ-ry-H6b"; */
+"ICJ-ry-H6b.text" = "100%";
+
+/* Class = "UIButton"; normalTitle = "恒湿:60%"; ObjectID = "OEJ-Zj-p8D"; */
+"OEJ-Zj-p8D.normalTitle" = "恒濕:60%";
+
+/* Class = "UILabel"; text = "恒湿模式"; ObjectID = "OiI-io-Vfw"; */
+"OiI-io-Vfw.text" = "恒濕模式";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "OzT-xn-K5I"; */
+"OzT-xn-K5I.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "智能模式"; ObjectID = "Rgp-I9-OjQ"; */
+"Rgp-I9-OjQ.text" = "智慧模式";
+
+/* Class = "UILabel"; text = "20"; ObjectID = "Sp2-N7-Aa7"; */
+"Sp2-N7-Aa7.text" = "20";
+
+/* Class = "UILabel"; text = "室外湿度"; ObjectID = "TFY-DX-MHU"; */
+"TFY-DX-MHU.text" = "室外濕度";
+
+/* Class = "UILabel"; text = "12:30 AM"; ObjectID = "WqK-vy-ObN"; */
+"WqK-vy-ObN.text" = "12:30 AM";
+
+/* Class = "UILabel"; text = "空气质量指数"; ObjectID = "XTR-9G-GF3"; */
+"XTR-9G-GF3.text" = "空氣品質指數";
+
+/* Class = "UIButton"; normalTitle = "滤网信息"; ObjectID = "YJB-w8-jbP"; */
+"YJB-w8-jbP.normalTitle" = "濾網資訊";
+
+/* Class = "UILabel"; text = "连续模式"; ObjectID = "ZuJ-AH-RNO"; */
+"ZuJ-AH-RNO.text" = "連續模式";
+
+/* Class = "UILabel"; text = "100%"; ObjectID = "bap-iA-5PM"; */
+"bap-iA-5PM.text" = "100%";
+
+/* Class = "UIButton"; normalTitle = "智 能"; ObjectID = "bhU-xA-hNz"; */
+"bhU-xA-hNz.normalTitle" = "智 慧";
+
+/* Class = "UILabel"; text = "定时开关机"; ObjectID = "cfs-FF-TPG"; */
+"cfs-FF-TPG.text" = "定時開關機";
+
+/* Class = "UILabel"; text = "新 风"; ObjectID = "dkG-f3-1gs"; */
+"dkG-f3-1gs.text" = "新 風";
+
+/* Class = "UILabel"; text = "冬天模式"; ObjectID = "e2I-NF-Lgr"; */
+"e2I-NF-Lgr.text" = "冬天模式";
+
+/* Class = "UILabel"; text = "排 风"; ObjectID = "g6o-he-Oel"; */
+"g6o-he-Oel.text" = "排 風";
+
+/* Class = "UILabel"; text = "净气0"; ObjectID = "hcP-ZF-ENJ"; */
+"hcP-ZF-ENJ.text" = "淨氣0";
+
+/* Class = "UILabel"; text = "室外温度"; ObjectID = "j2v-IR-YpD"; */
+"j2v-IR-YpD.text" = "室外溫度";
+
+/* Class = "UILabel"; text = "智能模式"; ObjectID = "j3l-N1-y9d"; */
+"j3l-N1-y9d.text" = "智慧模式";
+
+/* Class = "UIButton"; normalTitle = "开机"; ObjectID = "kXM-JA-Wcm"; */
+"kXM-JA-Wcm.normalTitle" = "開機";
+
+/* Class = "UILabel"; text = "净气12"; ObjectID = "kid-1f-zyx"; */
+"kid-1f-zyx.text" = "淨氣12";
+
+/* Class = "UILabel"; text = "室内温度"; ObjectID = "oCt-hs-MP6"; */
+"oCt-hs-MP6.text" = "室內溫度";
+
+/* Class = "UILabel"; text = "T2 壁 挂 新 风"; ObjectID = "olJ-Ay-t8d"; */
+"olJ-Ay-t8d.text" = "T2 壁 掛 新 風";
+
+/* Class = "UILabel"; text = "定时12:30AM"; ObjectID = "s4Y-DU-bjx"; */
+"s4Y-DU-bjx.text" = "定時12:30AM";
+
+/* Class = "UILabel"; text = "循环模式"; ObjectID = "vZ5-gF-1n2"; */
+"vZ5-gF-1n2.text" = "迴圈模式";
+
+/* Class = "UILabel"; text = "100%"; ObjectID = "vvO-ua-onk"; */
+"vvO-ua-onk.text" = "100%";
+
+/* Class = "UILabel"; text = "恒温模式"; ObjectID = "wTl-4e-kkf"; */
+"wTl-4e-kkf.text" = "恒溫模式";
+
+/* Class = "UILabel"; text = "富 氧"; ObjectID = "zCZ-6I-gBP"; */
+"zCZ-6I-gBP.text" = "富 氧";

@@ -21,7 +21,7 @@
 @end
 
 @implementation AppDelegate{
-   
+    
     
 }
 
@@ -49,15 +49,15 @@ signed int SendMsgToUi(int msgType, unsigned int devID, unsigned char *buff, int
             break;
         case MAIN_MSG_TYPE_DATA:
             NSLog(@"**************************MAIN_MSG_TYPE_DATA*******************");
-             [AppDelegate GetData:devID withData:buff witLength:len];
+            [AppDelegate GetData:devID withData:buff witLength:len];
             break;
         case MAIN_MSG_TYPE_NETWORK_UP:
-             NSLog(@"**************************MAIN_MSG_TYPE_NETWORK_UP*******************");
+            NSLog(@"**************************MAIN_MSG_TYPE_NETWORK_UP*******************");
             NSLog(@"*******MAIN_MSG_TYPE_NETWORK_UP");
             [AppDelegate GetNetworkUp:devID withData:buff witLength:len];
             break;
         case MAIN_MSG_TYPE_NETWORK_DOWN:
-             NSLog(@"**************************MAIN_MSG_TYPE_NETWORK_DOWN*******************");
+            NSLog(@"**************************MAIN_MSG_TYPE_NETWORK_DOWN*******************");
             NSLog(@"*******MAIN_MSG_TYPE_NETWORK_DOWN");
             [AppDelegate GetNetworkDown:devID withData:buff witLength:len];
             break;
@@ -115,8 +115,8 @@ static int cmdType;
 }
 +(void) setCMDType:(int)type{
     cmdType=type;
-;
-
+    ;
+    
 }
 
 +(void) GetInitData:(int ) devID withData:(unsigned char *)buff witLength:(int) len{
@@ -137,26 +137,28 @@ static int cmdType;
 }
 
 +(void) GetData:(int) devID withData:(unsigned char *)buff witLength:(int) len{
-
+    NSLog(@"*************************************查询设备信息*********************************");
     Byte bytes[len];
     for (int i=0; i<len; i++) {
         bytes[i]=buff[i];
     }
+   
     DeviceInfo *deviceInfo1=[[NetWorkManager sharedInstance] parseInfo:devID andData:bytes];
     if (deviceInfo1!=nil) {
         if (deviceInfo1.workMode==0) {//关机
-            ;
-            
             NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>关机<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-
-             [[NSNotificationCenter defaultCenter] postNotificationName:UI_CMD_RESULT_STATUS_TURN_OFF object:self userInfo:[NSDictionary dictionaryWithObject:deviceInfo1 forKey:@"devID"]];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:UI_CMD_RESULT_STATUS_TURN_OFF object:self userInfo:[NSDictionary dictionaryWithObject:deviceInfo1 forKey:@"devID"]];
         }else{
             
             NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>开机<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-             [[NSNotificationCenter defaultCenter] postNotificationName:UI_CMD_RESULT_STATUS_TURN_ON object:self userInfo:[NSDictionary dictionaryWithObject:deviceInfo1 forKey:@"devID"]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:UI_CMD_RESULT_STATUS_TURN_ON object:self userInfo:[NSDictionary dictionaryWithObject:deviceInfo1 forKey:@"devID"]];
         }
     }
     
+    NSString *str=[NSString stringWithFormat:@"ID:%u",devID&0x7fffffff];
+    NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ID=%@",str);
+     NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>deviceType=%u",deviceInfo1.deviceType);
     
     
     GNDevice *device=[NetWorkManager sharedInstance].devInfo;
@@ -164,11 +166,10 @@ static int cmdType;
         int infoID=strtoul([[device.devId substringWithRange:NSMakeRange(0, device.devId.length)] UTF8String],0,16);
         
         if (devID==infoID) {
-                      
             [NetWorkManager sharedInstance].deviceInfo=deviceInfo1;
             device.devInfo=deviceInfo1;
+          
         }
-        
     }
     
     [NetWorkManager sharedInstance].devices=[[sqlService sharedSqlService] getAllDevices];
@@ -180,17 +181,18 @@ static int cmdType;
             
             if (devID==infoID) {
                 info.devInfo=deviceInfo1;
+             
+                [[sqlService sharedSqlService] deleteDevInfo:info];
+                [[sqlService sharedSqlService] insertDevInfo:info];
+               
             }
-
+            
             
         }
-        
-        for (int i=0; i<[[NetWorkManager sharedInstance].devices count]; i++) {
-            GNDevice *info=[[NetWorkManager sharedInstance].devices objectAtIndex:i];
-            NSLog(@"*************************************info.devId=%@,  info.devInfo.deviceType=%d",info.devId,info.devInfo.deviceType);
-        }
+        [NetWorkManager sharedInstance].devices=[[sqlService sharedSqlService] getAllDevices];
+
     }
-   
+    
     switch (cmdType) {
         case CMD_CUR_TYPE_QUARY_DEVICE_INFO:
             [[NSNotificationCenter defaultCenter] postNotificationName:UI_CMD_RESULT_QUARY_DEVICE_INFO_SUCCESS object:self userInfo:nil];
@@ -228,7 +230,7 @@ static int cmdType;
 }
 +(void) GetFindNewWifiDev:(int) devID withData:(unsigned char *)buff witLength:(int) len{
     NSLog(@"GetFindNewWifiDev>>>>>>>>>devID=%u",devID);
-
+    
     Byte bytes[len];
     for (int i=0; i<len; i++) {
         bytes[i]=buff[i];
@@ -241,10 +243,14 @@ static int cmdType;
     GNDevice *device=[[GNDevice alloc]init];
     device.devId=[NSString stringWithFormat:@"%x",devID];
     NSLog(@"GetFindNewWifiDev>>>>>>>>>device.devId=%@",device.devId);
-
-    device.name=DEVICE_NAME_DEFAULT;
     
-    
+   
+    NSString *launge=[[SmartDeviceUtils sharedInstance] getCurrentLanguage];
+    if([launge isEqual:PHONE_LAUNGE]){
+         device.name=DEVICE_NAME_DEFAULT_TAIWAN;
+    }else{
+         device.name=DEVICE_NAME_DEFAULT;
+    }
     
     
     
@@ -252,16 +258,16 @@ static int cmdType;
     [[SmartDeviceUtils sharedInstance] addGNDevice:device];
     
     if ([[sqlService sharedSqlService] getDevInfoFromDBByDevID:device.devId]==nil) {
-         [[SmartDeviceUtils sharedInstance] addGNDeviceNew:device];
+        [[SmartDeviceUtils sharedInstance] addGNDeviceNew:device];
         NSLog(@"＊＊该设备没有添加到数据库  ID=%u",devID);
     }else{
         
-          NSLog(@"＊＊该设备已经添加到数据库  ID=%u",devID);
+        NSLog(@"＊＊该设备已经添加到数据库  ID=%u",devID);
     }
     
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTICE_MAIN_MSG_TYPE_FIND_NEW_WIFI_DEV object:self userInfo:nil];
-
+    
     
     
 }
@@ -306,7 +312,7 @@ static int cmdType;
     
     DevicesViewController *main=[[DevicesViewController alloc]init];
     
-//    MainViewController *main=[[MainViewController alloc]init];
+    //    MainViewController *main=[[MainViewController alloc]init];
     
     UINavigationController *lightNavi=[[UINavigationController alloc] initWithRootViewController:main];
     
@@ -342,7 +348,7 @@ static int cmdType;
         int devID=[devIDStr intValue];
         [AppDelegate setCurDevID:devID];
         Byte *buff = (Byte *)[buffData bytes];
-
+        
         int rc = 0;
         
         rc = UserInit(devID, 1000, buff);
@@ -351,14 +357,17 @@ static int cmdType;
         
         
     }else{
-         NSLog(@"》初次注册《");
+        NSLog(@"》初次注册《");
         UserInit(0, 1000, nil);
     }
     
-
-   [NetWorkManager sharedInstance].devices=[[sqlService sharedSqlService] getAllDevices];
     
-   
+    [NetWorkManager sharedInstance].devices=[[sqlService sharedSqlService] getAllDevices];
+    
+    for (int i=0; i<[[NetWorkManager sharedInstance].devices count]; i++) {
+        GNDevice *info=[[NetWorkManager sharedInstance].devices objectAtIndex:i];
+        NSLog(@"*************************************info.devId=%@,  info.devInfo.deviceType=%d",info.devId,info.devInfo.deviceType);
+    }
     return YES;
 }
 
