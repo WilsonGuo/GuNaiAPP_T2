@@ -106,7 +106,7 @@
             int result=UserApConfig(ssidAddressByte,bytesSSID.length,pwdAddressByte,bytesPwd.length,flag);
             [self endLoading];
             if (result==0) {
-                [self showTip:@"配置错误,请检查输入信息"];
+                [self showTip:@"配置錯誤,請檢查輸入信息"];
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.navigationController popViewControllerAnimated:YES];
@@ -115,7 +115,7 @@
             }
         });
     }else{
-        [self showTip:@"Wifi名称或密码不能为空"];
+        [self showTip:@"Wifi名稱或密碼不能為空"];
     }
  
     

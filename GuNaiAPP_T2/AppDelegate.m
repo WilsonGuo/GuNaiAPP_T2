@@ -244,17 +244,8 @@ static int cmdType;
     device.devId=[NSString stringWithFormat:@"%x",devID];
     NSLog(@"GetFindNewWifiDev>>>>>>>>>device.devId=%@",device.devId);
     
-   
-    NSString *launge=[[SmartDeviceUtils sharedInstance] getCurrentLanguage];
-    if([launge isEqual:PHONE_LAUNGE]){
-         device.name=DEVICE_NAME_DEFAULT_TAIWAN;
-    }else{
-         device.name=DEVICE_NAME_DEFAULT;
-    }
-    
-    
-    
-    
+    device.name=DEVICE_NAME_DEFAULT_TAIWAN;
+
     [[SmartDeviceUtils sharedInstance] addGNDevice:device];
     
     if ([[sqlService sharedSqlService] getDevInfoFromDBByDevID:device.devId]==nil) {

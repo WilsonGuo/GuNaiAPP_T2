@@ -46,7 +46,7 @@
     
     [self.timePicker1 addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged ];
     
- 
+    
     [self.timePicker2 addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged ];
     
     
@@ -64,7 +64,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(turnOff:)
                                                  name:UI_CMD_RESULT_STATUS_TURN_OFF object:nil];
-
+    
     
     
     CABasicAnimation* rotationAnimation;
@@ -85,7 +85,7 @@
     
     [self.circleView.layer addAnimation:rotationAnimation1 forKey:@"rotationAnimation1"];
     //self.device=[NetWorkManager sharedInstance].devInfo;
- 
+    
     
     NSString *launge=[[SmartDeviceUtils sharedInstance] getCurrentLanguage];
     if([launge isEqual:PHONE_LAUNGE]){//台湾
@@ -107,10 +107,10 @@
             self.middleView.hidden=NO;
         }
     }
-   
     
-   
-
+    
+    
+    
     
     DeviceInfo *info=[NetWorkManager sharedInstance].deviceInfo;
     
@@ -134,16 +134,16 @@
 }
 
 -(void)getData:(NSNotification *)notification{
-  
-     DeviceInfo *info=[NetWorkManager sharedInstance].deviceInfo;
+    
+    DeviceInfo *info=[NetWorkManager sharedInstance].deviceInfo;
     
     if([[NSString stringWithFormat:@"%x", info.sn] isEqual:self.device.devId]){
-       
-    dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self ReflushUI:info];
-        
-    });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self ReflushUI:info];
+            
+        });
     }
     
 }
@@ -177,7 +177,7 @@
     });
     
     
-
+    
     
 }
 - (IBAction)backAction:(id)sender {
@@ -190,7 +190,7 @@
         
         int result=[[NetWorkManager sharedInstance] airClose:devID];
         NSLog(@"airClose>>>>>>>>>>>>result＝%d",result);
-       
+        
     });
     
 }
@@ -200,7 +200,7 @@
     int value=(int)paramSender.value;
     if ([paramSender isEqual:self.slider3]){
         NSLog(@"slider3 value=%f",paramSender.value);
-         DeviceInfo *info=self.device.devInfo;
+        DeviceInfo *info=self.device.devInfo;
         [self.slider3_lable setText:[NSString stringWithFormat:@"%d",(value+20)]];
         
         int infoID=strtoul([[self.device.devId substringWithRange:NSMakeRange(0, self.device.devId.length)] UTF8String],0,16);
@@ -215,14 +215,17 @@
         NSLog(@"view_1_progress_1 value=%f",paramSender.value);
         self.view_1_label_2.text=[NSString stringWithFormat:@"排污：%d",value];
         slider_1_value=value;
-  
+        
     }else if([paramSender isEqual:self.view_1_progress_2]){
-
+        
         NSLog(@"view_1_progress_2 value=%f",paramSender.value);
-        self.view_1_label_1.text=[NSString stringWithFormat:@"净气：%d",value];
-         slider_2_value=value;
+        self.view_1_label_1.text=[NSString stringWithFormat:@"淨氣：%d",value];
+        slider_2_value=value;
         
     }
+    
+    
+    
 }
 -(void)dateChanged:(id)sender{
     UIDatePicker* control = (UIDatePicker*)sender;
@@ -236,7 +239,7 @@
         [self setEndHour:_date];
         [self setEndMin:_date];
     }
-   
+    
 }
 
 
@@ -275,13 +278,13 @@
 - (IBAction)timeOKAction:(id)sender {
     if (self.device!=nil) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-             NSDate *date1 = self.timePicker1.date;
+            NSDate *date1 = self.timePicker1.date;
             NSDate *date2 = self.timePicker2.date;
             [self setStartHour:date1];
             [self setStartMin:date1];
             [self setEndHour:date2];
             [self setEndMin:date2];
-
+            
             
             int infoID=strtoul([[self.device.devId substringWithRange:NSMakeRange(0, self.device.devId.length)] UTF8String],0,16);
             [[NetWorkManager sharedInstance] airSetTimer:startTime withStartMin:startMin withEndHour:endTime withEndMin:endMin withID:infoID];
@@ -299,15 +302,9 @@
 - (IBAction)bottomLeftAction:(id)sender {
     
     self.view_1.hidden=NO;
-    NSString *launge=[[SmartDeviceUtils sharedInstance] getCurrentLanguage];
-    if([launge isEqual:PHONE_LAUNGE]){//台湾
-        self.view_1_label_1.text=[NSString stringWithFormat:@"淨氣：%d",self.device.devInfo.windInLevel];;
-        self.view_1_label_2.text=[NSString stringWithFormat:@"排污：%d",self.device.devInfo.windOutLevel];
-    }else{
-        self.view_1_label_1.text=[NSString stringWithFormat:@"净气：%d",self.device.devInfo.windInLevel];;
-        self.view_1_label_2.text=[NSString stringWithFormat:@"排污：%d",self.device.devInfo.windOutLevel];
-    }
-   
+    self.view_1_label_1.text=[NSString stringWithFormat:@"淨氣：%d",self.device.devInfo.windInLevel];;
+    self.view_1_label_2.text=[NSString stringWithFormat:@"排污：%d",self.device.devInfo.windOutLevel];
+    
     [self.view_1_progress_2 setValue:self.device.devInfo.windInLevel];
     [self.view_1_progress_1 setValue:self.device.devInfo.windOutLevel];
     
@@ -371,9 +368,9 @@
     [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
     [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_checked"]];
     
-     int infoID=strtoul([[self.device.devId substringWithRange:NSMakeRange(0, self.device.devId.length)] UTF8String],0,16);
+    int infoID=strtoul([[self.device.devId substringWithRange:NSMakeRange(0, self.device.devId.length)] UTF8String],0,16);
     [[NetWorkManager sharedInstance] airSetMode:MODE_MANUAL withID:infoID];
-     self.view2.hidden=YES;
+    self.view2.hidden=YES;
 }
 
 - (IBAction)view_2_choose_3:(id)sender {
@@ -542,434 +539,217 @@
 
 -(void)ReflushUI:(DeviceInfo *) info{
     NSLog(@">>>>>>>>>>>>>>>>>>>>>ReflushUI<<<<<<<<<<<<<<<<<<<");
-
+    
     if (info!=nil) {
-        NSString *launge=[[SmartDeviceUtils sharedInstance] getCurrentLanguage];
-        if([launge isEqual:PHONE_LAUNGE]){//台湾
-            self.leverNum.text=[NSString stringWithFormat:@"%d",info.air];
+        
+        self.leverNum.text=[NSString stringWithFormat:@"%d",info.air];
+        
+        if(info.air < 2)
+        {
+            self.runState.text=@"優";
             
-            if(info.air < 2)
-            {
-                self.runState.text=@"優";
-                
-            }
-            else if(info.air < 4)
-            {
-                self.runState.text=@"良";
-            }
-            else if(info.air < 8)
-            {
-                self.runState.text=@"中";
-                
-            }
-            else
-            {
-                self.runState.text=@"差";
-                
-            }
-            
-            
-            //区分T1设备与T2设备
-            if (self.device.devInfo.deviceType==DEVICE_TYPE_T1) {
-                switch(info.workMode)
-                {
-                    case T1_MODE_AUTO:
-                        
-                        self.runTime.text=@"智慧模式";
-                        
-                        
-                        [self.view3_radio_3 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        [self.view3_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view3_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        
-                        break;
-                    case T1_MODE_CIRCLE:
-                        
-                        self.runTime.text=@"迴圈模式";
-                        
-                        
-                        [self.view3_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view3_radio_2 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        [self.view3_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        break;
-                    case T1_MODE_MANUAL:
-                        
-                        self.runTime.text=@"手動模式";
-                        
-                        [self.view3_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view3_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view3_radio_1 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        
-                        
-                        break;
-                    case T1_MODE_SHUTDOWN:
-                        if([NetWorkManager sharedInstance].isShowDown==false){
-                            
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                OpenViewController *vc=[[OpenViewController alloc]init];
-                                vc.device=self.device;
-                                
-                                [self.navigationController pushViewController:vc animated:YES];
-                                
-                            });
-                        }
-                        
-                        break;
-                        
-                        
-                        
-                }
-                
-            }else if(self.device.devInfo.deviceType==DEVICE_TYPE_T2){
-                switch(info.workMode)
-                {
-                    case MODE_AUTO:
-                        
-                        self.runTime.text=@"智能模式";
-                        
-                        
-                        [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        
-                        break;
-                    case MODE_WINTER:
-                        
-                        self.runTime.text=@"冬天模式";
-                        
-                        
-                        [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        break;
-                    case MODE_FIX:
-                        
-                        self.runTime.text=@"恒湿模式";
-                        [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        
-                        break;
-                        
-                        
-                    case MODE_MANUAL:
-                        
-                        self.runTime.text=@"连续模式";
-                        [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        
-                        break;
-                        
-                    case MODE_SHUTDOWN:
-                        if([NetWorkManager sharedInstance].isShowDown==false){
-                            
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                
-                                OpenViewController *vc=[[OpenViewController alloc]init];
-                                vc.device=self.device;
-                                [self.navigationController pushViewController:vc animated:YES];
-                                
-                            });
-                        }
-                        
-                        break;
-                        
-                        
-                        
-                }
-                
-            }
-            
-            
-            self.indoorHuim.text=[NSString stringWithFormat:@"%d%%",info.indoorHumi];
-            self.outdoorHuim.text=[NSString stringWithFormat:@"%d%%",info.outdoorHumi];
-            self.indoorTemp.text=[NSString stringWithFormat:@"%d℃",info.indoorTemp];
-            self.outdoorTemp.text=[NSString stringWithFormat:@"%d℃",info.outdoorTemp];
-            
-            [self.hengShiBtn setTitle:[NSString stringWithFormat:@"恒湿:%d%%",info.fixHumi] forState:UIControlStateNormal];
-            
-            if (info.sysTimeMin<10) {
-                self.curTime.text=[NSString stringWithFormat:@"設備時間:%d:%@",info.sysTimeHour,[NSString stringWithFormat:@"0%d",info.sysTimeMin]];
-            }else{
-                self.curTime.text=[NSString stringWithFormat:@"設備時間:%d:%d",info.sysTimeHour,info.sysTimeMin];
-            }
-            
-            if (info.timerStartMin<10) {
-                self.timerTime.text=[NSString stringWithFormat:@"定時開機：%d:%@",info.timerStartHour,[NSString stringWithFormat:@"0%d",info.timerStartMin]];
-            }else{
-                self.timerTime.text=[NSString stringWithFormat:@"定時開機：%d:%d",info.timerStartHour,info.timerStartMin];
-            }
-            if (info.timerEndMin<10) {
-                self.timerTimeEnd.text=[NSString stringWithFormat:@"定時關機：%d:%@",info.timerEndHour,[NSString stringWithFormat:@"0%d",info.timerEndMin]];
-            }else{
-                self.timerTimeEnd.text=[NSString stringWithFormat:@"定時關機：%d:%d",info.timerEndHour,info.timerEndMin];
-            }
-            
-            
-            if (info.windIn) {
-                [self.windNew setBackgroundImage:[UIImage imageNamed:@"state_wind_in_high"] forState:UIControlStateNormal];
-            }else{
-                [self.windNew setBackgroundImage:[UIImage imageNamed:@"state_wind_in"] forState:UIControlStateNormal];
-            }
-            
-            
-            if (info.windOut) {
-                [self.paiFeng setBackgroundImage:[UIImage imageNamed:@"state_wind_out_high"] forState:UIControlStateNormal];
-            }else{
-                [self.paiFeng setBackgroundImage:[UIImage imageNamed:@"state_wind_out"] forState:UIControlStateNormal];
-            }
-            
-            if (info.heat) {
-                [self.fuRe setBackgroundImage:[UIImage imageNamed:@"state_heat_high"] forState:UIControlStateNormal];
-            }else{
-                [self.fuRe setBackgroundImage:[UIImage imageNamed:@"state_heat"] forState:UIControlStateNormal];
-            }
-            
-            
-            if (info.o1) {
-                [self.fuYang setBackgroundImage:[UIImage imageNamed:@"state_o1_high"] forState:UIControlStateNormal];
-            }else{
-                [self.fuYang setBackgroundImage:[UIImage imageNamed:@"state_o1"] forState:UIControlStateNormal];
-            }
-            
-            if(!info.windIn)
-            {
-                self.windIn.text=@"淨氣 0";
-            }
-            else
-            {
-                self.windIn.text=[NSString stringWithFormat:@"淨氣 %d",info.windInLevel];
-            }
-            
-            if(!info.windOut)
-            {
-                self.windOut.text=@"排風 0";
-            }
-            else
-            {
-                self.windOut.text=[NSString stringWithFormat:@"排風 %d",info.windOutLevel];
-            }
-            
-
-            
-        }else{
-            self.leverNum.text=[NSString stringWithFormat:@"%d",info.air];
-            
-            if(info.air < 2)
-            {
-                self.runState.text=@"优";
-                
-            }
-            else if(info.air < 4)
-            {
-                self.runState.text=@"良";
-            }
-            else if(info.air < 8)
-            {
-                self.runState.text=@"中";
-                
-            }
-            else
-            {
-                self.runState.text=@"差";
-                
-            }
-            
-            
-            //区分T1设备与T2设备
-            if (self.device.devInfo.deviceType==DEVICE_TYPE_T1) {
-                switch(info.workMode)
-                {
-                    case T1_MODE_AUTO:
-                        
-                        self.runTime.text=@"智能模式";
-                        
-                        
-                        [self.view3_radio_3 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        [self.view3_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view3_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        
-                        break;
-                    case T1_MODE_CIRCLE:
-                        
-                        self.runTime.text=@"循环模式";
-                        
-                        
-                        [self.view3_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view3_radio_2 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        [self.view3_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        break;
-                    case T1_MODE_MANUAL:
-                        
-                        self.runTime.text=@"手动模式";
-                        
-                        [self.view3_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view3_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view3_radio_1 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        
-                        
-                        break;
-                    case T1_MODE_SHUTDOWN:
-                        if([NetWorkManager sharedInstance].isShowDown==false){
-                            
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                OpenViewController *vc=[[OpenViewController alloc]init];
-                                vc.device=self.device;
-                                
-                                [self.navigationController pushViewController:vc animated:YES];
-                                
-                            });
-                        }
-                        
-                        break;
-                        
-                        
-                        
-                }
-                
-            }else if(self.device.devInfo.deviceType==DEVICE_TYPE_T2){
-                switch(info.workMode)
-                {
-                    case MODE_AUTO:
-                        
-                        self.runTime.text=@"智能模式";
-                        
-                        
-                        [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        
-                        break;
-                    case MODE_WINTER:
-                        
-                        self.runTime.text=@"冬天模式";
-                        
-                        
-                        [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        break;
-                    case MODE_FIX:
-                        
-                        self.runTime.text=@"恒湿模式";
-                        [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        
-                        break;
-                        
-                        
-                    case MODE_MANUAL:
-                        
-                        self.runTime.text=@"连续模式";
-                        [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
-                        [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_checked"]];
-                        
-                        break;
-                        
-                    case MODE_SHUTDOWN:
-                        if([NetWorkManager sharedInstance].isShowDown==false){
-                            
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                
-                                OpenViewController *vc=[[OpenViewController alloc]init];
-                                vc.device=self.device;
-                                [self.navigationController pushViewController:vc animated:YES];
-                                
-                            });
-                        }
-                        
-                        break;
-                        
-                        
-                        
-                }
-                
-            }
-            
-            
-            self.indoorHuim.text=[NSString stringWithFormat:@"%d%%",info.indoorHumi];
-            self.outdoorHuim.text=[NSString stringWithFormat:@"%d%%",info.outdoorHumi];
-            self.indoorTemp.text=[NSString stringWithFormat:@"%d℃",info.indoorTemp];
-            self.outdoorTemp.text=[NSString stringWithFormat:@"%d℃",info.outdoorTemp];
-            
-            [self.hengShiBtn setTitle:[NSString stringWithFormat:@"恒湿:%d%%",info.fixHumi] forState:UIControlStateNormal];
-            
-            if (info.sysTimeMin<10) {
-                self.curTime.text=[NSString stringWithFormat:@"设备时间:%d:%@",info.sysTimeHour,[NSString stringWithFormat:@"0%d",info.sysTimeMin]];
-            }else{
-                self.curTime.text=[NSString stringWithFormat:@"设备时间:%d:%d",info.sysTimeHour,info.sysTimeMin];
-            }
-            
-            if (info.timerStartMin<10) {
-                self.timerTime.text=[NSString stringWithFormat:@"定时开机：%d:%@",info.timerStartHour,[NSString stringWithFormat:@"0%d",info.timerStartMin]];
-            }else{
-                self.timerTime.text=[NSString stringWithFormat:@"定时开机：%d:%d",info.timerStartHour,info.timerStartMin];
-            }
-            if (info.timerEndMin<10) {
-                self.timerTimeEnd.text=[NSString stringWithFormat:@"定时关机：%d:%@",info.timerEndHour,[NSString stringWithFormat:@"0%d",info.timerEndMin]];
-            }else{
-                self.timerTimeEnd.text=[NSString stringWithFormat:@"定时关机：%d:%d",info.timerEndHour,info.timerEndMin];
-            }
-            
-            
-            if (info.windIn) {
-                [self.windNew setBackgroundImage:[UIImage imageNamed:@"state_wind_in_high"] forState:UIControlStateNormal];
-            }else{
-                [self.windNew setBackgroundImage:[UIImage imageNamed:@"state_wind_in"] forState:UIControlStateNormal];
-            }
-            
-            
-            if (info.windOut) {
-                [self.paiFeng setBackgroundImage:[UIImage imageNamed:@"state_wind_out_high"] forState:UIControlStateNormal];
-            }else{
-                [self.paiFeng setBackgroundImage:[UIImage imageNamed:@"state_wind_out"] forState:UIControlStateNormal];
-            }
-            
-            if (info.heat) {
-                [self.fuRe setBackgroundImage:[UIImage imageNamed:@"state_heat_high"] forState:UIControlStateNormal];
-            }else{
-                [self.fuRe setBackgroundImage:[UIImage imageNamed:@"state_heat"] forState:UIControlStateNormal];
-            }
-            
-            
-            if (info.o1) {
-                [self.fuYang setBackgroundImage:[UIImage imageNamed:@"state_o1_high"] forState:UIControlStateNormal];
-            }else{
-                [self.fuYang setBackgroundImage:[UIImage imageNamed:@"state_o1"] forState:UIControlStateNormal];
-            }
-            
-            if(!info.windIn)
-            {
-                self.windIn.text=@"净气 0";
-            }
-            else
-            {
-                self.windIn.text=[NSString stringWithFormat:@"净气 %d",info.windInLevel];
-            }
-            
-            if(!info.windOut)
-            {
-                self.windOut.text=@"排污 0";
-            }
-            else
-            {
-                self.windOut.text=[NSString stringWithFormat:@"排风 %d",info.windOutLevel];
-            }
-            
- 
         }
-   
+        else if(info.air < 4)
+        {
+            self.runState.text=@"良";
+        }
+        else if(info.air < 8)
+        {
+            self.runState.text=@"中";
+            
+        }
+        else
+        {
+            self.runState.text=@"差";
+            
+        }
+        
+        
+        //区分T1设备与T2设备
+        if (self.device.devInfo.deviceType==DEVICE_TYPE_T1) {
+            switch(info.workMode)
+            {
+                case T1_MODE_AUTO:
+                    
+                    self.runTime.text=@"智慧模式";
+                    
+                    
+                    [self.view3_radio_3 setImage:[UIImage imageNamed:@"radio_checked"]];
+                    [self.view3_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view3_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    
+                    break;
+                case T1_MODE_CIRCLE:
+                    
+                    self.runTime.text=@"迴圈模式";
+                    
+                    
+                    [self.view3_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view3_radio_2 setImage:[UIImage imageNamed:@"radio_checked"]];
+                    [self.view3_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    break;
+                case T1_MODE_MANUAL:
+                    
+                    self.runTime.text=@"手動模式";
+                    
+                    [self.view3_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view3_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view3_radio_1 setImage:[UIImage imageNamed:@"radio_checked"]];
+                    
+                    
+                    break;
+                case T1_MODE_SHUTDOWN:
+                    if([NetWorkManager sharedInstance].isShowDown==false){
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            OpenViewController *vc=[[OpenViewController alloc]init];
+                            vc.device=self.device;
+                            
+                            [self.navigationController pushViewController:vc animated:YES];
+                            
+                        });
+                    }
+                    
+                    break;
+                    
+                    
+                    
+            }
+            
+        }else if(self.device.devInfo.deviceType==DEVICE_TYPE_T2){
+            switch(info.workMode)
+            {
+                case MODE_AUTO:
+                    
+                    self.runTime.text=@"智慧模式";
+                    
+                    
+                    [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_checked"]];
+                    [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    
+                    break;
+                case MODE_WINTER:
+                    
+                    self.runTime.text=@"冬天模式";
+                    
+                    
+                    [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_checked"]];
+                    [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    break;
+                case MODE_FIX:
+                    
+                    self.runTime.text=@"恒濕模式";
+                    [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_checked"]];
+                    [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    
+                    break;
+                    
+                    
+                case MODE_MANUAL:
+                    
+                    self.runTime.text=@"連續模式";
+                    [self.view_2_radio_4 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view_2_radio_3 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view_2_radio_2 setImage:[UIImage imageNamed:@"radio_unchecked"]];
+                    [self.view_2_radio_1 setImage:[UIImage imageNamed:@"radio_checked"]];
+                    
+                    break;
+                    
+                case MODE_SHUTDOWN:
+                    if([NetWorkManager sharedInstance].isShowDown==false){
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            OpenViewController *vc=[[OpenViewController alloc]init];
+                            vc.device=self.device;
+                            [self.navigationController pushViewController:vc animated:YES];
+                            
+                        });
+                    }
+                    
+                    break;
+                    
+                    
+                    
+            }
+            
+        }
+        
+        
+        self.indoorHuim.text=[NSString stringWithFormat:@"%d%%",info.indoorHumi];
+        self.outdoorHuim.text=[NSString stringWithFormat:@"%d%%",info.outdoorHumi];
+        self.indoorTemp.text=[NSString stringWithFormat:@"%d℃",info.indoorTemp];
+        self.outdoorTemp.text=[NSString stringWithFormat:@"%d℃",info.outdoorTemp];
+        
+        [self.hengShiBtn setTitle:[NSString stringWithFormat:@"恒濕:%d%%",info.fixHumi] forState:UIControlStateNormal];
+        
+        if (info.sysTimeMin<10) {
+            self.curTime.text=[NSString stringWithFormat:@"設備時間:%d:%@",info.sysTimeHour,[NSString stringWithFormat:@"0%d",info.sysTimeMin]];
+        }else{
+            self.curTime.text=[NSString stringWithFormat:@"設備時間:%d:%d",info.sysTimeHour,info.sysTimeMin];
+        }
+        
+        if (info.timerStartMin<10) {
+            self.timerTime.text=[NSString stringWithFormat:@"定時開機：%d:%@",info.timerStartHour,[NSString stringWithFormat:@"0%d",info.timerStartMin]];
+        }else{
+            self.timerTime.text=[NSString stringWithFormat:@"定時開機：%d:%d",info.timerStartHour,info.timerStartMin];
+        }
+        if (info.timerEndMin<10) {
+            self.timerTimeEnd.text=[NSString stringWithFormat:@"定時關機：%d:%@",info.timerEndHour,[NSString stringWithFormat:@"0%d",info.timerEndMin]];
+        }else{
+            self.timerTimeEnd.text=[NSString stringWithFormat:@"定時關機：%d:%d",info.timerEndHour,info.timerEndMin];
+        }
+        
+        
+        if (info.windIn) {
+            [self.windNew setBackgroundImage:[UIImage imageNamed:@"state_wind_in_high"] forState:UIControlStateNormal];
+        }else{
+            [self.windNew setBackgroundImage:[UIImage imageNamed:@"state_wind_in"] forState:UIControlStateNormal];
+        }
+        
+        
+        if (info.windOut) {
+            [self.paiFeng setBackgroundImage:[UIImage imageNamed:@"state_wind_out_high"] forState:UIControlStateNormal];
+        }else{
+            [self.paiFeng setBackgroundImage:[UIImage imageNamed:@"state_wind_out"] forState:UIControlStateNormal];
+        }
+        
+        if (info.heat) {
+            [self.fuRe setBackgroundImage:[UIImage imageNamed:@"state_heat_high"] forState:UIControlStateNormal];
+        }else{
+            [self.fuRe setBackgroundImage:[UIImage imageNamed:@"state_heat"] forState:UIControlStateNormal];
+        }
+        
+        
+        if (info.o1) {
+            [self.fuYang setBackgroundImage:[UIImage imageNamed:@"state_o1_high"] forState:UIControlStateNormal];
+        }else{
+            [self.fuYang setBackgroundImage:[UIImage imageNamed:@"state_o1"] forState:UIControlStateNormal];
+        }
+        
+        if(!info.windIn)
+        {
+            self.windIn.text=@"淨氣 0";
+        }
+        else
+        {
+            self.windIn.text=[NSString stringWithFormat:@"淨氣 %d",info.windInLevel];
+        }
+        
+        if(!info.windOut)
+        {
+            self.windOut.text=@"排風 0";
+        }
+        else
+        {
+            self.windOut.text=[NSString stringWithFormat:@"排風 %d",info.windOutLevel];
+        }
         
     }
     

@@ -211,7 +211,7 @@
         GNDevice *info=[self.devicesNew objectAtIndex:indexPath.row];
         
         if ([info.name isEqual:@""]||[info.name isEqual:nil]) {
-            cell.devName.text=@"古耐智能设备";
+            cell.devName.text=@"古耐智能設備";
         }else{
             cell.devName.text=info.name;
         }
@@ -228,7 +228,7 @@
     }else{//全部设备
         GNDevice *info=[self.devices objectAtIndex:indexPath.row];
         if ([info.name isEqual:@""]||[info.name isEqual:nil]) {
-            cell.devName.text=@"古耐智能设备";
+            cell.devName.text=@"古耐智能設備";
         }else{
             cell.devName.text=info.name;
         }

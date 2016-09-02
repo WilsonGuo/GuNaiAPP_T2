@@ -62,14 +62,11 @@
 
 
 -(void)changeToMainVC:(NSNotification *)notification{
-  
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         int deviceType=[NetWorkManager sharedInstance].devInfo.devInfo.deviceType;
         
         [self endLoading];
-
-        NSLog(@"select>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>info.sn===%@,   deviceType=%d",[NSString stringWithFormat:@"%x", [NetWorkManager sharedInstance].devInfo.devInfo.sn],deviceType);
-        
         
         if (deviceType==DEVICE_TYPE_24G) {
             CenterViewController *vc=[[CenterViewController alloc]init];
@@ -89,7 +86,7 @@
             
         }
     });
-
+    
     
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -222,10 +219,10 @@
         
         int infoID=strtoul([[device.devId substringWithRange:NSMakeRange(0, device.devId.length)] UTF8String],0,16);
         NSString *str=[NSString stringWithFormat:@"ID:%u",infoID&0x7fffffff];
-       
+        
         if(status==1){
             NSLog(@"设备在线：devID=%u  status=%d",devID,status);
- 
+            
         }else{
             NSLog(@"设备不在线：devID=%u  status=%d",devID,status);
         }
@@ -254,8 +251,8 @@
                 //[self startLoading];
                 
             });
-
-          
+            
+            
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self showTip:@"该设备不在线！"];
@@ -301,94 +298,35 @@
     int infoID=strtoul([[info.devId substringWithRange:NSMakeRange(0, info.devId.length)] UTF8String],0,16);
     cell.devID.text=[NSString stringWithFormat:@"ID:%u",infoID&0x7fffffff];
     
-    NSString *launge=[[SmartDeviceUtils sharedInstance] getCurrentLanguage];
-    if([launge isEqual:PHONE_LAUNGE]){//台湾
-        if(info.status==1){
-            
-            cell.devStatus.text=@"線上";
-            if (info.devInfo!=nil) {
-                
-                
-                int deviceType=info.devInfo.deviceType;
-                if (deviceType==DEVICE_TYPE_24G) {
-                    
-                    if ([info.name isEqual:DEVICE_NAME_DEFAULT_TAIWAN]) {
-                        cell.devName.text=DEVICE_NAME_CENTER_TAIWAN;
-                        
-                        info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_CENTER_TAIWAN];
-                        
-                    }else{
-                        cell.devName.text=info.name;
-                    }
-                }else if(deviceType==DEVICE_TYPE_T1){
-                    if ([info.name isEqual:DEVICE_NAME_DEFAULT_TAIWAN]) {
-                        cell.devName.text=DEVICE_NAME_S1_TAIWAN;
-                        
-                        info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_S1_TAIWAN];
-                        
-                    }else{
-                        cell.devName.text=info.name;
-                    }
-                }else if(deviceType==DEVICE_TYPE_T2){
-                    
-                    if ([info.name isEqual:DEVICE_NAME_DEFAULT_TAIWAN]) {
-                        cell.devName.text=DEVICE_NAME_S2_TAIWAN;
-                        
-                        info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_S2_TAIWAN];
-                        
-                    }else{
-                        cell.devName.text=info.name;
-                    }
-                    
-                }else{
-                    cell.devName.text=info.name;
-                }
-            }else{
-                cell.devName.text=info.name;
-                
-                
-            }
-        }else{
-            cell.devStatus.text=@"離線";
-            cell.devName.text=info.name;
-        }
-
-    }else{
-        
-    
-    
     if(info.status==1){
-        
-        cell.devStatus.text=@"在线";
+        cell.devStatus.text=@"線上";
         if (info.devInfo!=nil) {
-            
-            
             int deviceType=info.devInfo.deviceType;
             if (deviceType==DEVICE_TYPE_24G) {
                 
-                if ([info.name isEqual:DEVICE_NAME_DEFAULT]) {
-                    cell.devName.text=DEVICE_NAME_CENTER;
+                if ([info.name isEqual:DEVICE_NAME_DEFAULT_TAIWAN]) {
+                    cell.devName.text=DEVICE_NAME_CENTER_TAIWAN;
                     
-                    info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_CENTER];
+                    info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_CENTER_TAIWAN];
                     
                 }else{
                     cell.devName.text=info.name;
                 }
             }else if(deviceType==DEVICE_TYPE_T1){
-                if ([info.name isEqual:DEVICE_NAME_DEFAULT]) {
-                    cell.devName.text=DEVICE_NAME_S1;
+                if ([info.name isEqual:DEVICE_NAME_DEFAULT_TAIWAN]) {
+                    cell.devName.text=DEVICE_NAME_S1_TAIWAN;
                     
-                    info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_S1];
+                    info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_S1_TAIWAN];
                     
                 }else{
                     cell.devName.text=info.name;
                 }
             }else if(deviceType==DEVICE_TYPE_T2){
                 
-                if ([info.name isEqual:DEVICE_NAME_DEFAULT]) {
-                    cell.devName.text=DEVICE_NAME_S2;
+                if ([info.name isEqual:DEVICE_NAME_DEFAULT_TAIWAN]) {
+                    cell.devName.text=DEVICE_NAME_S2_TAIWAN;
                     
-                    info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_S2];
+                    info.name=[NSString stringWithFormat:@"%@",DEVICE_NAME_S2_TAIWAN];
                     
                 }else{
                     cell.devName.text=info.name;
@@ -403,11 +341,10 @@
             
         }
     }else{
-        cell.devStatus.text=@"离线";
+        cell.devStatus.text=@"離線";
         cell.devName.text=info.name;
     }
     
-    }
     //长按操作
     UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(cellLongPress:)];
     [cell addGestureRecognizer:longPressGesture];
@@ -447,7 +384,7 @@
     
     [self.waitImgView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
     
-   
+    
     
 }
 -(void)endLoading{

@@ -110,10 +110,6 @@
 		C85B1C591CA800E400F5CB47 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C85B1C581CA800E400F5CB47 /* MBProgressHUD.m */; };
 		C85B1C5D1CA807EB00F5CB47 /* NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C85B1C5C1CA807EB00F5CB47 /* NetWorkManager.m */; };
 		C85E3CC41CC39518008ECC41 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C85E3CC31CC39518008ECC41 /* libstdc++.tbd */; };
-		C875C24C1CB8EFBD00772008 /* guide_cn.html in Resources */ = {isa = PBXBuildFile; fileRef = C875C2481CB8EFBD00772008 /* guide_cn.html */; };
-		C875C24D1CB8EFBD00772008 /* faq_cn.html in Resources */ = {isa = PBXBuildFile; fileRef = C875C2491CB8EFBD00772008 /* faq_cn.html */; };
-		C875C24E1CB8EFBD00772008 /* faq.html in Resources */ = {isa = PBXBuildFile; fileRef = C875C24A1CB8EFBD00772008 /* faq.html */; };
-		C875C24F1CB8EFBD00772008 /* guide.html in Resources */ = {isa = PBXBuildFile; fileRef = C875C24B1CB8EFBD00772008 /* guide.html */; };
 		C875C2531CB8F06400772008 /* UserGuidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C875C2511CB8F06400772008 /* UserGuidViewController.m */; };
 		C875C2581CB8F3B900772008 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C875C2561CB8F3B900772008 /* QuestionViewController.m */; };
 		C875C25D1CB8FFFF00772008 /* ScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C875C25B1CB8FFFF00772008 /* ScreenViewController.m */; };
@@ -124,6 +120,10 @@
 		C8813DE81D72D06D003E2B88 /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8813DEA1D72D06D003E2B88 /* SetViewController.xib */; };
 		C89678D91CA673DD00EBD18D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89678D81CA673DD00EBD18D /* SystemConfiguration.framework */; };
 		C8B8B59D1CCCC26600906828 /* libnetwork_20160424_v1 2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B8B59C1CCCC26600906828 /* libnetwork_20160424_v1 2.a */; };
+		C8EC9D1F1D76933B00EA7DD3 /* guide_cn.html in Resources */ = {isa = PBXBuildFile; fileRef = C8EC9D1B1D76933B00EA7DD3 /* guide_cn.html */; };
+		C8EC9D201D76933B00EA7DD3 /* guide.html in Resources */ = {isa = PBXBuildFile; fileRef = C8EC9D1C1D76933B00EA7DD3 /* guide.html */; };
+		C8EC9D211D76933B00EA7DD3 /* faq_cn.html in Resources */ = {isa = PBXBuildFile; fileRef = C8EC9D1D1D76933B00EA7DD3 /* faq_cn.html */; };
+		C8EC9D221D76933B00EA7DD3 /* faq.html in Resources */ = {isa = PBXBuildFile; fileRef = C8EC9D1E1D76933B00EA7DD3 /* faq.html */; };
 		C8F6E1291CC372AE00010A02 /* launcher_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8F6E1281CC372AE00010A02 /* launcher_icon@2x.png */; };
 		C8F6E12E1CC3766E00010A02 /* EditNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F6E12C1CC3766E00010A02 /* EditNameViewController.m */; };
 		C8F6E1341CC38AC500010A02 /* CompanyIntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F6E1321CC38AC500010A02 /* CompanyIntroduceViewController.m */; };
@@ -294,10 +294,6 @@
 		C85B1C5B1CA807EB00F5CB47 /* NetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetWorkManager.h; path = ../Sub/NetWorkManager.h; sourceTree = "<group>"; };
 		C85B1C5C1CA807EB00F5CB47 /* NetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetWorkManager.m; path = ../Sub/NetWorkManager.m; sourceTree = "<group>"; };
 		C85E3CC31CC39518008ECC41 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
-		C875C2481CB8EFBD00772008 /* guide_cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = guide_cn.html; path = ../guide_cn.html; sourceTree = "<group>"; };
-		C875C2491CB8EFBD00772008 /* faq_cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = faq_cn.html; path = ../faq_cn.html; sourceTree = "<group>"; };
-		C875C24A1CB8EFBD00772008 /* faq.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = faq.html; path = ../faq.html; sourceTree = "<group>"; };
-		C875C24B1CB8EFBD00772008 /* guide.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = guide.html; path = ../guide.html; sourceTree = "<group>"; };
 		C875C2501CB8F06400772008 /* UserGuidViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserGuidViewController.h; sourceTree = "<group>"; };
 		C875C2511CB8F06400772008 /* UserGuidViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGuidViewController.m; sourceTree = "<group>"; };
 		C875C2551CB8F3B900772008 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
@@ -313,6 +309,10 @@
 		C8813DE91D72D06D003E2B88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SetViewController.xib; sourceTree = "<group>"; };
 		C89678D81CA673DD00EBD18D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C8B8B59C1CCCC26600906828 /* libnetwork_20160424_v1 2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libnetwork_20160424_v1 2.a"; sourceTree = "<group>"; };
+		C8EC9D1B1D76933B00EA7DD3 /* guide_cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = guide_cn.html; sourceTree = "<group>"; };
+		C8EC9D1C1D76933B00EA7DD3 /* guide.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = guide.html; sourceTree = "<group>"; };
+		C8EC9D1D1D76933B00EA7DD3 /* faq_cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = faq_cn.html; sourceTree = "<group>"; };
+		C8EC9D1E1D76933B00EA7DD3 /* faq.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = faq.html; sourceTree = "<group>"; };
 		C8F6E1281CC372AE00010A02 /* launcher_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launcher_icon@2x.png"; sourceTree = "<group>"; };
 		C8F6E12B1CC3766E00010A02 /* EditNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNameViewController.h; sourceTree = "<group>"; };
 		C8F6E12C1CC3766E00010A02 /* EditNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNameViewController.m; sourceTree = "<group>"; };
@@ -603,10 +603,10 @@
 		C8F6E12A1CC372DC00010A02 /* Res */ = {
 			isa = PBXGroup;
 			children = (
-				C875C2481CB8EFBD00772008 /* guide_cn.html */,
-				C875C2491CB8EFBD00772008 /* faq_cn.html */,
-				C875C24A1CB8EFBD00772008 /* faq.html */,
-				C875C24B1CB8EFBD00772008 /* guide.html */,
+				C8EC9D1B1D76933B00EA7DD3 /* guide_cn.html */,
+				C8EC9D1C1D76933B00EA7DD3 /* guide.html */,
+				C8EC9D1D1D76933B00EA7DD3 /* faq_cn.html */,
+				C8EC9D1E1D76933B00EA7DD3 /* faq.html */,
 			);
 			name = Res;
 			path = ../Res;
@@ -698,13 +698,13 @@
 				C83DEA491D72D16A002B428C /* OpenViewController.xib in Resources */,
 				C85A3C271CB2681C00F644E4 /* good_fan@2x.png in Resources */,
 				C835C2C91C4CCEE90074E307 /* commit_btn_bg_normal@2x.png in Resources */,
-				C875C24E1CB8EFBD00772008 /* faq.html in Resources */,
 				C83DEA5E1D72D18C002B428C /* ScreenViewController.xib in Resources */,
 				C85A3BEE1CB0EFDD00F644E4 /* device_icon_high@2x.png in Resources */,
 				C814C40C1CDEF37000BD4501 /* center_speed_bg@2x.png in Resources */,
 				C835C2ED1C4CE5B70074E307 /* option@2x.png in Resources */,
 				C875C2611CB902E300772008 /* point@2x.png in Resources */,
 				C82868851CB5457D008600C3 /* open_s@2x.png in Resources */,
+				C8EC9D211D76933B00EA7DD3 /* faq_cn.html in Resources */,
 				C814C40E1CDEF37000BD4501 /* center_speed_low@2x.png in Resources */,
 				C835C3011C4CEF170074E307 /* option_faq@2x.png in Resources */,
 				C835C3031C4CEF170074E307 /* option_about@2x.png in Resources */,
@@ -722,11 +722,11 @@
 				C835C2D61C4CD0190074E307 /* state_o1@2x.png in Resources */,
 				C835C2D81C4CD0190074E307 /* state_wind_in@2x.png in Resources */,
 				C85A3C001CB0F79F00F644E4 /* best_fan@2x.png in Resources */,
+				C8EC9D221D76933B00EA7DD3 /* faq.html in Resources */,
 				C835C2FF1C4CEF170074E307 /* option_update@2x.png in Resources */,
 				C85A3C291CB2690300F644E4 /* good_timer@2x.png in Resources */,
 				C85A3C251CB266E800F644E4 /* good_close_s@2x.png in Resources */,
 				C814C4191CDEF54600BD4501 /* center_state_icon_good@2x.png in Resources */,
-				C875C24F1CB8EFBD00772008 /* guide.html in Resources */,
 				C83DEA811D72D1B6002B428C /* CenterViewController.xib in Resources */,
 				C83DEA341D72D14C002B428C /* SearchViewController.xib in Resources */,
 				C835C2B11C4C90080074E307 /* Assets.xcassets in Resources */,
@@ -736,7 +736,6 @@
 				C875C2661CB90D2400772008 /* radio_unchecked@2x.png in Resources */,
 				C835C3041C4CEF170074E307 /* option_icon_bg@2x.png in Resources */,
 				C814C4161CDEF54600BD4501 /* center_state_bg2@2x.png in Resources */,
-				C875C24C1CB8EFBD00772008 /* guide_cn.html in Resources */,
 				C83DEA501D72D172002B428C /* UserGuidViewController.xib in Resources */,
 				C814C4021CDEE88300BD4501 /* T1MainViewController.xib in Resources */,
 				C835C2F11C4CEBD70074E307 /* launcher_icon@2x.png in Resources */,
@@ -751,14 +750,15 @@
 				C814C4171CDEF54600BD4501 /* center_state_icon_bad@2x.png in Resources */,
 				C835C2DA1C4CD0190074E307 /* state_wind_out@2x.png in Resources */,
 				C83DEA6C1D72D19D002B428C /* CompanyIntroduceViewController.xib in Resources */,
-				C875C24D1CB8EFBD00772008 /* faq_cn.html in Resources */,
 				C835C2D41C4CD0190074E307 /* state_heat@2x.png in Resources */,
 				C835C2E91C4CE4320074E307 /* bottom@2x.png in Resources */,
 				C85A3BFD1CB0F68B00F644E4 /* check_normal@2x.png in Resources */,
 				C83DEA731D72D1A6002B428C /* DevicesViewController.xib in Resources */,
 				C85A3C241CB266E800F644E4 /* good_close_n@2x.png in Resources */,
+				C8EC9D1F1D76933B00EA7DD3 /* guide_cn.html in Resources */,
 				C835C2AC1C4C90080074E307 /* Main.storyboard in Resources */,
 				C83DEA7A1D72D1AD002B428C /* MainViewController.xib in Resources */,
+				C8EC9D201D76933B00EA7DD3 /* guide.html in Resources */,
 				C835C30A1C4CF5800074E307 /* home@2x.png in Resources */,
 				C814C40F1CDEF37000BD4501 /* center_speed_mid@2x.png in Resources */,
 				C814C4181CDEF54600BD4501 /* center_state_icon_fresh@2x.png in Resources */,
